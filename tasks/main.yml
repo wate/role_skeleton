@@ -9,5 +9,5 @@
   template: src=default.j2 dest=/etc/default/{{ app_name }}
 - name: create init script
   template: src=app.j2 dest=/etc/init.d/{{ app_name }}
-- name: create {{ app_name }} systemd unit file
+- name: create systemd unit file
   template: src=app.service.j2 dest=/lib/systemd/system/{{ app_name }}.service
