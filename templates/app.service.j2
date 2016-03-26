@@ -1,0 +1,19 @@
+[Unit]
+Description={{ app_description }}
+# Requires=mysqld.service
+# Wants=mysqld.service
+# After=mysqld.service
+
+[Service]
+Type=simple
+Restart=always
+EnvironmentFile=/etc/default/{{ app_name }}
+User={{ app_user }}
+WorkingDirectory={{ app_home }}
+SyslogIdentifier={{ app_name }}
+ExecStart={{ app_home }}/{{ app_name }} $DAEMON_ARGS
+ExecStop=/bin/kill -TERM $MAINPID
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+---
+- name: add {{ app_name }} user
+  user: name={{ app_user }} comment="{{ app_description }}" system=yes
+- name: create {{ app_name }} home
+  file: path={{ app_home }} state=directory owner={{ app_name }}
+
+
+- name: create configuration variable file
+  template: src=default.j2 dest=/etc/default/{{ app_name }}
+- name: create init script
+  template: src=app.j2 dest=/etc/init.d/{{ app_name }}
+- name: create {{ app_name }} systemd unit file
+  template: src=app.service.j2 dest=/lib/systemd/system/{{ app_name }}.service

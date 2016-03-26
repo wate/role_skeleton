@@ -1,0 +1,14 @@
+###
+# start-stop-daemon start argments
+###
+START_ARGS=
+
+###
+# daemon pidfile path
+###
+PIDFILE=/var/run/{{ app_name }}.pid
+
+###
+# daemon start argments
+###
+DAEMON_ARGS={{ app_args }}
