@@ -1,4 +1,0 @@
-app_name: app_name
-app_description: "Description of the service"
-app_user: {{ app_name }}
-app_home: "/opt/{{ app_name }}"

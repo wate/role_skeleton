@@ -1,9 +1,0 @@
----
-- name: start app
-  service: name={{ app_name }} state=started
-- name: stop app
-  service: name={{ app_name }} state=stopped
-- name: restart app
-  service: name={{ app_name }} state=restarted
-- name: reload app
-  service: name={{ app_name }} state=reloaded

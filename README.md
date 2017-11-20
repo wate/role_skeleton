@@ -1,1 +1,0 @@
-# ansible_role_skeleton
