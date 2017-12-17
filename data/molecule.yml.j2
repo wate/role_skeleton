@@ -18,6 +18,6 @@ vagrant:
   instances:
     - name: {{ role_name }}
       ansible_groups:
-        - group1
+        - {{ role_name }}
 verifier:
   name: serverspec
