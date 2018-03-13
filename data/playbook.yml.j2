@@ -15,6 +15,7 @@
             path: ".molecule/facts/{{ inventory_hostname }}.yml"
             create: yes
             block: "{{ vars | to_nice_yaml }}"
+          changed_when: no
       connection: local
       become: no
 {% endraw -%}
