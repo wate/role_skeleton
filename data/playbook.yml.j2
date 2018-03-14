@@ -10,6 +10,7 @@
           file:
             path: .molecule/facts
             state: directory
+          changed_when: no
         - name: dump host gether facts
           blockinfile:
             path: ".molecule/facts/{{ inventory_hostname }}.yml"
