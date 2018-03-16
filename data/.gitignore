@@ -14,10 +14,6 @@ __pycache__/
 tests/roles
 *.pyc
 
-# End of https://www.gitignore.io/api/ansible
-
-# Created by https://www.gitignore.io/api/vagrant
-
 ### Vagrant ###
 .vagrant/
 *.box
