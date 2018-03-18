@@ -26,6 +26,11 @@ describe service('ntpd') do
   it { should be_running }
 end
 
+describe port(80) do
+  it { should be_listening }
+  it { should be_listening.with('tcp') }
+end
+
 describe command('apachectl -V') do
   its(:stdout) { should match(/Apache/) }
   its(:stdout) { should contain('Prefork') }
