@@ -56,6 +56,9 @@ group_names.each do |name|
   test_vars.deep_merge!(YAML.load_file(var_file)) if File.exist?(var_file)
 end
 
+var_file = File.join(role_dir, '.molecule', 'host_vars', host)
+test_vars.deep_merge!(YAML.load_file(var_file)) if File.exist?(var_file)
+
 var_file = File.join(role_dir, 'vars', 'main.yml')
 test_vars.deep_merge!(YAML.load_file(var_file)) if File.exist?(var_file)
 
