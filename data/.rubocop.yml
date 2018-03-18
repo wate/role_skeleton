@@ -2,8 +2,7 @@ Style/ClassAndModuleChildren:
   Exclude:
     - spec/spec_helper.rb
 Style/ConditionalAssignment:
-  Exclude:
-    - spec/spec_helper.rb
+  Enabled: false
 Performance/RedundantBlockCall:
   Exclude:
     - spec/spec_helper.rb
