@@ -20,8 +20,9 @@ class ::Hash
   def deep_merge(other_hash, &block)
     dup.deep_merge!(other_hash, &block)
   end
+
   def deep_merge!(other_hash, &block)
-    other_hash.each_pair do |k,v|
+    other_hash.each_pair do |k, v|
       tv = self[k]
       if tv.is_a?(Hash) && v.is_a?(Hash)
         self[k] = tv.deep_merge(v, &block)
@@ -46,9 +47,7 @@ group_names = ['all']
 var_file = File.join(role_dir, '.molecule', 'facts', host + '.yml')
 if File.exist?(var_file)
   test_vars.merge!(YAML.load_file(var_file))
-  if test_vars.key?('group_names')
-    group_names = test_vars['group_names'].unshift('all')
-  end
+  group_names = test_vars['group_names'].unshift('all') if test_vars.key?('group_names')
 end
 
 group_names.each do |name|

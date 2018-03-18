@@ -1,3 +1,13 @@
+Style/ClassAndModuleChildren:
+  Exclude:
+    - spec/spec_helper.rb
+Style/ConditionalAssignment:
+  Exclude:
+    - spec/spec_helper.rb
+Performance/RedundantBlockCall:
+  Exclude:
+    - spec/spec_helper.rb
+
 Metrics/LineLength:
   Max: 120
   AllowHeredoc: true
