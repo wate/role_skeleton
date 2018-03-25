@@ -1,6 +1,7 @@
 require 'serverspec'
 require 'net/ssh'
 require 'yaml'
+require 'deep_merge'
 
 host = ENV['TARGET_HOST']
 ssh_config_files = ['./.vagrant/ssh-config'] + Net::SSH::Config.default_files
@@ -16,30 +17,13 @@ def e(value)
   Regexp.escape(value.is_a?(String) ? value : value.to_s)
 end
 
-class ::Hash
-  def deep_merge(other_hash, &block)
-    dup.deep_merge!(other_hash, &block)
-  end
-  def deep_merge!(other_hash, &block)
-    merge!(other_hash) do |key, this_val, other_val|
-      if this_val.is_a?(Hash) && other_val.is_a?(Hash)
-        this_val.deep_merge(other_val, &block)
-      elsif block_given?
-        block.call(key, this_val, other_val)
-      else
-        other_val
-      end
-    end
-  end
-end
-
 spec_dir = File.dirname(__FILE__)
 role_dir = File.dirname(spec_dir)
 
 test_vars = {}
 
 var_file = File.join(role_dir, 'defaults', 'main.yml')
-test_vars.deep_merge!(YAML.load_file(var_file)) if File.exist?(var_file)
+test_vars.deep_merge!(YAML.load_file(var_file), {:overwrite_arrays => true}) if File.exist?(var_file)
 
 group_names = ['all']
 
@@ -51,14 +35,14 @@ end
 
 group_names.each do |name|
   var_file = File.join(role_dir, '.molecule', 'group_vars', name)
-  test_vars.deep_merge!(YAML.load_file(var_file)) if File.exist?(var_file)
+  test_vars.deep_merge!(YAML.load_file(var_file), {:overwrite_arrays => true}) if File.exist?(var_file)
 end
 
 var_file = File.join(role_dir, '.molecule', 'host_vars', host)
-test_vars.deep_merge!(YAML.load_file(var_file)) if File.exist?(var_file)
+test_vars.deep_merge!(YAML.load_file(var_file), {:overwrite_arrays => true}) if File.exist?(var_file)
 
 var_file = File.join(role_dir, 'vars', 'main.yml')
-test_vars.deep_merge!(YAML.load_file(var_file)) if File.exist?(var_file)
+test_vars.deep_merge!(YAML.load_file(var_file), {:overwrite_arrays => true}) if File.exist?(var_file)
 
 set_property test_vars
 
