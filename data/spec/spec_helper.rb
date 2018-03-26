@@ -23,7 +23,12 @@ role_dir = File.dirname(spec_dir)
 test_vars = {}
 
 var_file = File.join(role_dir, 'defaults', 'main.yml')
-test_vars.deep_merge!(YAML.load_file(var_file), {:overwrite_arrays => true}) if File.exist?(var_file)
+
+deep_merge_option = {
+  overwrite_arrays: true
+}
+
+test_vars.deep_merge!(YAML.load_file(var_file), deep_merge_option) if File.exist?(var_file)
 
 group_names = ['all']
 
@@ -35,14 +40,14 @@ end
 
 group_names.each do |name|
   var_file = File.join(role_dir, '.molecule', 'group_vars', name)
-  test_vars.deep_merge!(YAML.load_file(var_file), {:overwrite_arrays => true}) if File.exist?(var_file)
+  test_vars.deep_merge!(YAML.load_file(var_file), deep_merge_option) if File.exist?(var_file)
 end
 
 var_file = File.join(role_dir, '.molecule', 'host_vars', host)
-test_vars.deep_merge!(YAML.load_file(var_file), {:overwrite_arrays => true}) if File.exist?(var_file)
+test_vars.deep_merge!(YAML.load_file(var_file), deep_merge_option) if File.exist?(var_file)
 
 var_file = File.join(role_dir, 'vars', 'main.yml')
-test_vars.deep_merge!(YAML.load_file(var_file), {:overwrite_arrays => true}) if File.exist?(var_file)
+test_vars.deep_merge!(YAML.load_file(var_file), deep_merge_option) if File.exist?(var_file)
 
 set_property test_vars
 
