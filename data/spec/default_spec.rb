@@ -8,10 +8,15 @@ describe file('/path/to/file') do
   it { should exist }
   it { should be_file }
   its(:content) { should match(/ServerName www.example.jp/) }
-  it { should contain 'ServerName www.example.jp' }
-  it { should contain('rspec').from(/^group :test do/).to(/^end/) }
-  it { should contain('rspec').after(/^group :test do/) }
-  it { should contain('rspec').before(/^end/) }
+  its(:content) { should match 'ServerName www.example.jp' }
+  multi_line_string = <<~"EOS"
+  line 1 {
+    line 2 {
+      line 3
+    }
+  }
+  EOS
+  its(:content) { should match multi_line_string }
   it { should be_directory }
   it { should be_readable }
   it { should be_writable }
@@ -33,10 +38,14 @@ end
 
 describe command('apachectl -V') do
   its(:stdout) { should match(/Apache/) }
-  its(:stdout) { should contain('Prefork') }
-  its(:stdout) { should contain('Prefork').from(/^Server MPM/).to(/^Server compiled/) }
-  its(:stdout) { should contain('conf/httpd.conf').after('SERVER_CONFIG_FILE') }
-  its(:stdout) { should contain(' Apache/2.2.29').before('Server built') }
+  multi_line_string = <<~"EOS"
+  line 1 {
+    line 2 {
+      line 3
+    }
+  }
+  EOS
+  its(:stdout) { should match multi_line_string }
   its(:stderr) { should match(/apachectl: command not found/) }
   its(:exit_status) { should eq 0 }
 end
