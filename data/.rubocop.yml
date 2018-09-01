@@ -1,9 +1,17 @@
+---
+AllCops:
+  TargetRubyVersion: 2.3
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Layout/IndentHeredoc:
+  Enabled: false
+Naming/HeredocDelimiterNaming:
+  Enabled: false
 Style/ClassAndModuleChildren:
   Exclude:
     - spec/spec_helper.rb
 Style/ConditionalAssignment:
   Enabled: false
-
 Performance/RedundantBlockCall:
   Exclude:
     - spec/spec_helper.rb
