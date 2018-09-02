@@ -7,6 +7,7 @@ host = ENV['TARGET_HOST']
 ssh_config_files = ['./.vagrant/ssh-config'] + Net::SSH::Config.default_files
 options = Net::SSH::Config.for(host, ssh_config_files)
 options[:user] ||= 'vagrant'
+options[:user_known_hosts_file] = '/dev/null'
 options[:keys].push("#{Dir.home}/.vagrant.d/insecure_private_key")
 
 set :backend, :ssh
