@@ -3,6 +3,8 @@ AllCops:
   TargetRubyVersion: 2.3
 Style/FrozenStringLiteralComment:
   Enabled: false
+Style/SafeNavigation:
+  Enabled: false
 Layout/IndentHeredoc:
   Enabled: false
 Naming/HeredocDelimiterNaming:
