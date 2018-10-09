@@ -1,29 +1,26 @@
 ---
 AllCops:
   TargetRubyVersion: 2.3
-Style/FrozenStringLiteralComment:
-  Enabled: false
-Style/SafeNavigation:
-  Enabled: false
 Layout/IndentHeredoc:
   Enabled: false
 Naming/HeredocDelimiterNaming:
+  Enabled: false
+Style/FrozenStringLiteralComment:
   Enabled: false
 Style/ClassAndModuleChildren:
   Exclude:
     - spec/spec_helper.rb
 Style/ConditionalAssignment:
   Enabled: false
+Style/SafeNavigation:
+  Enabled: false
+Style/DoubleNegation:
+  Enabled: false
+Style/CaseEquality:
+  Enabled: false
 Performance/RedundantBlockCall:
   Exclude:
     - spec/spec_helper.rb
-
-Style/DoubleNegation:
-  Enabled: false
-
-Style/CaseEquality:
-  Enabled: false
-
 Metrics/LineLength:
   Max: 120
   AllowHeredoc: true
@@ -33,7 +30,6 @@ Metrics/LineLength:
     - https
   IgnoreCopDirectives: false
   IgnoredPatterns: []
-
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
