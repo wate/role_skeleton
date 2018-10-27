@@ -5,11 +5,21 @@ driver:
   name: vagrant
   provider:
     name: virtualbox
-lint:
-  name: yamllint
 platforms:
   - name: stretch
     box: wate/debian-9
+# driver:
+#   name: docker
+# platforms:
+#   - name: instance
+#     image: "geerlingguy/docker-${MOLECULE_DISTRO:-debian9}-ansible:latest"
+#     command: ${MOLECULE_DOCKER_COMMAND:-""}
+#     volumes:
+#       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+#     privileged: true
+#     pre_build_image: true
+lint:
+  name: yamllint
 provisioner:
   name: ansible
   options:
