@@ -22,7 +22,7 @@ def test_sample(host):
     assert f.linked_to == '/run/lock'
     assert f.user == 'root'
     assert f.group == 'root'
-    assert f.mode == '0600'
+    assert f.mode == 0o600
     assert f.contains('test string')
 
     assert host.package('package_name').is_installed
