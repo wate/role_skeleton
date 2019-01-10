@@ -1,7 +1,7 @@
 import os
-# import re
-# import yaml
+import yaml
 import pytest
+# import re
 
 import testinfra.utils.ansible_runner
 
