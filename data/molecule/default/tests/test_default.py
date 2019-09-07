@@ -10,13 +10,13 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 property = {}
-var_file = os.environ['MOLECULE_PROJECT_DIRECTORY'] + '/defaults/main.yml'
-if os.path.exists(var_file):
-    property.update(yaml.load(open(var_file, 'r')))
+default_var_file = os.environ['MOLECULE_PROJECT_DIRECTORY'] + '/defaults/main.yml'
+if os.path.exists(default_var_file):
+    property.update(yaml.full_load(open(default_var_file, 'r')))
 
-var_file = os.environ['MOLECULE_PROJECT_DIRECTORY'] + '/vars/main.yml'
-if os.path.exists(var_file):
-    property.update(yaml.load(open(var_file, 'r')))
+role_var_file = os.environ['MOLECULE_PROJECT_DIRECTORY'] + '/vars/main.yml'
+if os.path.exists(role_var_file):
+    property.update(yaml.full_load(open(role_var_file, 'r')))
 
 
 @pytest.mark.parametrize('name', [
