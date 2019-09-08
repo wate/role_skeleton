@@ -1,6 +1,8 @@
 ---
 # Based on ansible-lint config
 extends: default
+ignore: |
+  dump_vars/
 
 rules:
   braces:

@@ -5,21 +5,3 @@
   become: true
   roles:
     - role: {{ role_name }}
-  {% raw -%}
-  pre_tasks:
-    - name: dump vars
-      block:
-        - name: create dump directory
-          file:
-            path: tests/__pycache__
-            state: directory
-          changed_when: false
-        - name: dump vars
-          blockinfile:
-            path: "tests/__pycache__/{{ inventory_hostname }}.yml"
-            create: true
-            block: "{{ vars | to_nice_yaml }}"
-          changed_when: false
-      connection: local
-      become: false
-{% endraw -%}
