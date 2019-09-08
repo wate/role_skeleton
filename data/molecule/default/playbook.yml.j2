@@ -5,3 +5,22 @@
   become: true
   roles:
     - role: {{ role_name }}
+  {% raw %}
+  pre_tasks:
+    - name: dump vars
+      block:
+        - name: create dump directory
+          file:
+            path: dump_vars
+            state: directory
+          changed_when: false
+        - name: dump host vars
+          blockinfile:
+            path: "dump_vars/{{ inventory_hostname }}.yml"
+            create: true
+            block: "{{ vars | to_json }}"
+          changed_when: false
+      connection: local
+      become: false
+
+{% endraw %}
