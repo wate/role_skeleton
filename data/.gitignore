@@ -57,3 +57,4 @@ __pycache__/
 # End of https://www.gitignore.io/api/packer,vagrant,ansible,testinfra,terraform
 
 dump_vars/
+.envrc
