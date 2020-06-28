@@ -26,20 +26,18 @@ platforms:
 #       - /sys/fs/cgroup:/sys/fs/cgroup:ro
 #     privileged: true
 #     pre_build_image: true
-lint:
-  name: yamllint
 provisioner:
   name: ansible
-  config_options:
-    defaults:
-      hash_behaviour: merge
-  options:
-    diff: true
   lint:
     name: ansible-lint
     # options:
     #   exclude:
     #     - 306
+  config_options:
+    defaults:
+      hash_behaviour: merge
+  options:
+    diff: true
   # playbooks:
   #   create: create.yml
   #   prepare: prepare.yml
@@ -48,11 +46,13 @@ provisioner:
 scenario:
   name: default
   # create_sequence:
+  #   - dependency
   #   - create
   #   - prepare
   # check_sequence:
-  #   - destroy
   #   - dependency
+  #   - cleanup
+  #   - destroy
   #   - create
   #   - prepare
   #   - converge
@@ -64,11 +64,14 @@ scenario:
   #   - prepare
   #   - converge
   # destroy_sequence:
+  #   - dependency
+  #   - cleanup
   #   - destroy
   # test_sequence:
-  #   - lint
-  #   - destroy
   #   - dependency
+  #   - lint
+  #   - cleanup
+  #   - destroy
   #   - syntax
   #   - create
   #   - prepare
@@ -76,6 +79,7 @@ scenario:
   #   - idempotence
   #   - side_effect
   #   - verify
+  #   - cleanup
   #   - destroy
 verifier:
   name: testinfra
