@@ -7,8 +7,9 @@ platforms:
   ## https://hub.docker.com/u/geerlingguy
   - name: buster
     groups:
-      - debian
       - family_debian
+    children:
+      - debian
     image: "geerlingguy/docker-debian10-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
@@ -17,8 +18,9 @@ platforms:
     pre_build_image: true
   - name: jessie
     groups:
-      - debian
       - family_debian
+    children:
+      - debian
     image: "geerlingguy/docker-debian9-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
@@ -27,8 +29,9 @@ platforms:
     pre_build_image: true
   - name: bionic
     groups:
-      - ubuntu
       - family_debian
+    children:
+      - ubuntu
     image: "geerlingguy/docker-ubuntu1804-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
@@ -37,8 +40,9 @@ platforms:
     pre_build_image: true
   - name: xenial
     groups:
-      - ubuntu
       - family_debian
+    children:
+      - ubuntu
     image: "geerlingguy/docker-ubuntu1604-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
@@ -47,8 +51,9 @@ platforms:
     pre_build_image: true
   - name: centos8
     groups:
-      - centos
       - family_redhat
+    children:
+      - centos
     image: "geerlingguy/docker-centos8-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
@@ -57,8 +62,9 @@ platforms:
     pre_build_image: true
   - name: centos7
     groups:
-      - centos
       - family_redhat
+    children:
+      - centos
     image: "geerlingguy/docker-centos7-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
