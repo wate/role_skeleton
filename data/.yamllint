@@ -1,7 +1,7 @@
 ---
 extends: default
 ignore: |
-  dump_vars/
+  .travis.yml
 rules:
   line-length:
     max: 150

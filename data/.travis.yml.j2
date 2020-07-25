@@ -1,0 +1,18 @@
+---
+language: python
+services: docker
+env:
+  global:
+    - ROLE_NAME: {{ role_name }}
+install:
+  - pip install molecule yamllint ansible-lint docker
+before_script:
+  - cd ../
+  - mv ansible-role-$ROLE_NAME $ROLE_NAME
+  - cd $ROLE_NAME
+script:
+  - molecule test
+notifications:
+  email: false
+  slack:
+    secure: "execute `travis encrypt "<slack_name>:<token>" --add notifications.slack -x --no-interactive`"
