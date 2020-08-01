@@ -3,5 +3,7 @@
   hosts: all
   gather_facts: true
   become: true
-  roles:
-    - role: {{ role_name }}
+  tasks:
+    - name: "Include {{ role_name }}"
+      include_role:
+        name: "{{ role_name }}"
