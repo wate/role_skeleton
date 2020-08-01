@@ -4,6 +4,6 @@
   gather_facts: true
   become: true
   tasks:
-    - name: "Include {{ role_name }}"
+    - name: Include {{ role_name }}
       include_role:
-        name: "{{ role_name }}"
+        name: {{ role_name }}
