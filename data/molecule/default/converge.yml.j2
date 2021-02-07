@@ -1,9 +1,11 @@
+{% raw -%}
 ---
 - name: Converge
   hosts: all
   gather_facts: true
   become: true
   tasks:
-    - name: Include {{ role_name }}
+    - name: "Include role"
       include_role:
-        name: {{ role_name }}
+        name: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
+{% endraw %}

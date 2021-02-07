@@ -1,7 +1,7 @@
 ---
+# Based on ansible-lint config
 extends: default
-ignore: |
-  .travis.yml
+
 rules:
   braces:
     max-spaces-inside: 1

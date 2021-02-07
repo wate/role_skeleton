@@ -7,8 +7,8 @@ env:
 before_install:
   - sudo apt-get -qq update
 install:
-  - python3 -m pip install molecule yamllint ansible-lint
-  - python3 -m pip install docker
+  - python3 -m pip install ansible
+  - python3 -m pip install molecule[docker,lint]
 before_script:
   - cd ../
   - mv ansible-role-$ROLE_NAME $ROLE_NAME

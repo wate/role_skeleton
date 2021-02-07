@@ -2,75 +2,50 @@
 dependency:
   name: galaxy
 driver:
-  name: docker
+  name: ${DRIVER_NAME:-docker}
 platforms:
-  ## https://hub.docker.com/u/geerlingguy
   - name: buster
     groups:
       - family_debian
     children:
       - debian
+    # driver:docker
     image: "geerlingguy/docker-debian10-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     pre_build_image: true
-  - name: jessie
+    # driver:vagrant
+    box: wate/debian-10
+  - name: stretch
     groups:
       - family_debian
     children:
       - debian
+    # driver:docker
     image: "geerlingguy/docker-debian9-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     pre_build_image: true
-  - name: bionic
-    groups:
-      - family_debian
-    children:
-      - ubuntu
-    image: "geerlingguy/docker-ubuntu1804-ansible:latest"
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    pre_build_image: true
-  - name: xenial
-    groups:
-      - family_debian
-    children:
-      - ubuntu
-    image: "geerlingguy/docker-ubuntu1604-ansible:latest"
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    pre_build_image: true
-  - name: centos8
-    groups:
-      - family_redhat
-    children:
-      - centos
-    image: "geerlingguy/docker-centos8-ansible:latest"
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    pre_build_image: true
+    # driver:vagrant
+    box: wate/debian-9
   - name: centos7
     groups:
       - family_redhat
     children:
       - centos
+    # driver:docker
     image: "geerlingguy/docker-centos7-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     pre_build_image: true
+    # driver:vagrant
+    box: wate/centos-7
 lint: |
   set -e
   yamllint .
