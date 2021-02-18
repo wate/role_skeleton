@@ -17,5 +17,5 @@ script:
   - molecule test
 notifications:
   email: false
-  slack:
-    secure: "execute `travis encrypt "<slack_name>:<token>" --add notifications.slack -x --no-interactive`"
+  # slack:
+  #   secure: 'execute `travis encrypt "<slack_name>:<token>" --add notifications.slack -x --no-interactive`'
