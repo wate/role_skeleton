@@ -4,6 +4,20 @@ dependency:
 driver:
   name: ${DRIVER_NAME:-docker}
 platforms:
+  - name: bullseye
+    groups:
+      - family_debian
+    children:
+      - debian
+    # driver:docker
+    image: "geerlingguy/docker-debian11-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    pre_build_image: true
+    # driver:vagrant
+    box: wate/debian-11
   - name: buster
     groups:
       - family_debian
@@ -18,20 +32,6 @@ platforms:
     pre_build_image: true
     # driver:vagrant
     box: wate/debian-10
-  - name: stretch
-    groups:
-      - family_debian
-    children:
-      - debian
-    # driver:docker
-    image: "geerlingguy/docker-debian9-ansible:latest"
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    pre_build_image: true
-    # driver:vagrant
-    box: wate/debian-9
   - name: centos7
     groups:
       - family_redhat
