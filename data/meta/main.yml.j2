@@ -3,6 +3,8 @@ galaxy_info:
   author: {{ author }}
   description: {{ description }}
   license: MIT
+  role_name: my_name
+  namespace: my_galaxy_namespace
   min_ansible_version: 2.9
   # platforms:
   #   - name: EL
@@ -10,12 +12,12 @@ galaxy_info:
   #       - 7
   #   - name: Debian
   #     versions:
+  #       - bullseye
   #       - buster
-  #       - stretch
   galaxy_tags: []
 dependencies: []
   # List your role dependencies here, one per line. Be sure to remove the '[]' above,
   # if you add dependencies to this list.
-  {% for dependency in dependencies %}
+{% for dependency in dependencies -%}
   #- {{ dependency }}
-  {% endfor %}
+{% endfor %}
