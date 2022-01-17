@@ -4,6 +4,23 @@
   hosts: all
   gather_facts: true
   become: true
+  pre_tasks:
+    - name: update cache(Debian)
+      apt:
+        update_cache: true
+      when: ansible_facts.os_family == 'Debian'
+    - name: update cache(RedHat 8 <)
+      yum:
+        update_cache: true
+      when:
+        - ansible_facts.os_family == 'RedHat'
+        - ansible_facts.os_family is version('8', operator='<')
+    - name: update cache(RedHat 8 >=)
+      dnf:
+        update_cache: true
+      when:
+        - ansible_facts.os_family == 'RedHat'
+        - ansible_facts.distribution_major_version is version('8', operator='>=')
   tasks:
     - name: "Include role"
       include_role:
