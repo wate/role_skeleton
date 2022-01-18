@@ -16,6 +16,6 @@
   apt_repository:
     filename: {{ role_name }}
     {% raw -%}
-    repo: https://packages.repository.com/debian {{ ansible_facts.distribution_release }} main
+    repo: deb https://packages.repository.com/debian {{ ansible_facts.distribution_release }} main
     state: present
  {% endraw %}
