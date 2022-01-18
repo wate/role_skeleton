@@ -1,0 +1,21 @@
+---
+{% raw -%}
+- name: install dependency packages
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg
+- name: add apt signing key
+  apt_key:
+    url: https://packages.repository.com/gpg.key
+    state: present
+{% endraw %}
+- name: add {{ role_name }} repository
+  apt_repository:
+    filename: {{ role_name }}
+    {% raw -%}
+    repo: https://packages.repository.com/debian {{ ansible_facts.distribution_release }} main
+    state: present
+ {% endraw %}

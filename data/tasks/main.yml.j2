@@ -1,2 +1,30 @@
 ---
-# tasks file for {{ role_name }}
+{% raw -%}
+- name: find variable file
+  set_fact:
+    variable_file: "{{ lookup('first_found', params, errors='ignore') }}"
+  vars:
+    params:
+      files:
+        - '{{ ansible_facts.distribution }}_{{ ansible_facts.distribution_major_version }}.yml'
+        - '{{ ansible_facts.distribution }}.yml'
+        - '{{ ansible_facts.os_family }}_{{ ansible_facts.distribution_major_version }}.yml'
+        - '{{ ansible_facts.os_family }}.yml'
+      paths:
+        - vars
+- name: include variable file
+  include_vars: "{{ variable_file }}"
+  when: variable_file != ""
+- name: add repository
+  import_tasks: repository.yml
+  tags: repository
+- name: install packages
+  import_tasks: package.yml
+  tags: package
+- name: create/update setting
+  import_tasks: setting.yml
+  tags: setting
+- name: setup service
+  import_tasks: service.yml
+  tags: service
+{% endraw %}

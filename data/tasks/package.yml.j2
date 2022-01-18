@@ -1,0 +1,10 @@
+---
+# install packages tasks file for {{ role_name }}
+{% raw -%}
+- name: install dependency packages
+  apt:
+    name: "{{ role_dependency_packages }}"
+- name: install packages
+  apt:
+    name: "{{ role_packages }}"
+{% endraw %}
