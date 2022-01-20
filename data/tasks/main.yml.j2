@@ -14,6 +14,9 @@
 - name: include variable file
   include_vars: "{{ variable_file }}"
   when: variable_file | length > 0
+- name: install dependency packages
+  import_tasks: dependency.yml
+  tags: dependency
 - name: add repository
   import_tasks: repository.yml
   tags: repository
