@@ -6,9 +6,8 @@
   vars:
     params:
       files:
-        - '{{ ansible_facts.distribution }}_{{ ansible_facts.distribution_major_version }}.yml'
-        - '{{ ansible_facts.distribution }}.yml'
-        - '{{ ansible_facts.os_family }}_{{ ansible_facts.distribution_major_version }}.yml'
+        - '{{ ansible_facts.os_family }}/{{ ansible_facts.distribution }}/{{ ansible_facts.distribution_major_version }}.yml'
+        - '{{ ansible_facts.os_family }}/{{ ansible_facts.distribution }}.yml'
         - '{{ ansible_facts.os_family }}.yml'
       paths:
         - vars
