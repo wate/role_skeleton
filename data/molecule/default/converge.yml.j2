@@ -14,7 +14,7 @@
         update_cache: true
       when:
         - ansible_facts.os_family == 'RedHat'
-        - ansible_facts.os_family is version('8', operator='<')
+        - ansible_facts.distribution_major_version is version('8', operator='<')
     - name: update cache(RedHat 8 >=)
       dnf:
         update_cache: true
