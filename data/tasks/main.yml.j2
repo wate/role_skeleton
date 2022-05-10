@@ -1,7 +1,7 @@
 ---
 {% raw -%}
 - name: find variable file
-  set_fact:
+  ansible.builtin.set_fact:
     variable_file: "{{ lookup('first_found', params, errors='ignore') }}"
   vars:
     params:
@@ -12,21 +12,21 @@
       paths:
         - vars
 - name: include variable file
-  include_vars: "{{ variable_file }}"
+  ansible.builtin.include_vars: "{{ variable_file }}"
   when: variable_file | length > 0
 - name: install dependency packages
-  import_tasks: dependency.yml
+  ansible.builtin.import_tasks: dependency.yml
   tags: dependency
 - name: add repository
-  import_tasks: repository.yml
+  ansible.builtin.import_tasks: repository.yml
   tags: repository
 - name: install packages
-  import_tasks: package.yml
+  ansible.builtin.import_tasks: package.yml
   tags: package
 - name: create/update setting
-  import_tasks: setting.yml
+  ansible.builtin.import_tasks: setting.yml
   tags: setting
 - name: setup service
-  import_tasks: service.yml
+  ansible.builtin.import_tasks: service.yml
   tags: service
 {% endraw %}
