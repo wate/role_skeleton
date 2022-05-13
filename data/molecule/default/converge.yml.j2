@@ -6,23 +6,23 @@
   become: true
   pre_tasks:
     - name: update cache(Debian)
-      apt:
+      ansible.builtin.apt:
         update_cache: true
       when: ansible_facts.os_family == 'Debian'
     - name: update cache(RedHat 8 <)
-      yum:
+      ansible.builtin.yum:
         update_cache: true
       when:
         - ansible_facts.os_family == 'RedHat'
         - ansible_facts.distribution_major_version is version('8', operator='<')
     - name: update cache(RedHat 8 >=)
-      dnf:
+      ansible.builtin.dnf:
         update_cache: true
       when:
         - ansible_facts.os_family == 'RedHat'
         - ansible_facts.distribution_major_version is version('8', operator='>=')
   tasks:
     - name: "Include role"
-      include_role:
+      ansible.builtin.include_role:
         name: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
 {% endraw %}
