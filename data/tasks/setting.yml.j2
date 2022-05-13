@@ -1,16 +1,16 @@
 ---
 - name: add/update setting file
-  template:
+  ansible.builtin.template:
     src: {{ role_name }}.j2
     dest: /erc/{{ role_name }}/{{ role_name }}.conf
     mode: "0644"
 - name: add/update custom setting line
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: /etc/{{ role_name }}/{{ role_name }}.conf
     regexp: "^(#\\s+)?option_name="
     line: option_name=option_value
 - name: add/update custom setting block
-  blockinfile:
+  ansible.builtin.blockinfile:
     path: /etc/{{ role_name }}/{{ role_name }}.conf
     {% raw -%}
     block: "{{ role_extra_cfg }}"
