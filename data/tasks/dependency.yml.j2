@@ -1,6 +1,6 @@
 {% raw -%}
 ---
-- name: find task file
+- name: Find task file
   ansible.builtin.set_fact:
     include_task_file: "{{ lookup('first_found', params, errors='ignore') }}"
   vars:
@@ -11,7 +11,7 @@
         - '{{ ansible_facts.os_family }}.yml'
       paths:
         - tasks/dependency
-- name: install dependency packages
+- name: Install dependency packages
   ansible.builtin.include_tasks: "{{ include_task_file }}"
   when: include_task_file | length > 0
 {% endraw %}

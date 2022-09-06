@@ -1,18 +1,18 @@
 ---
 {% raw -%}
-- name: install dependency packages
+- name: Install dependency packages
   ansible.builtin.apt:
     name:
       - apt-transport-https
       - ca-certificates
       - curl
       - gnupg
-- name: add apt signing key
+- name: Add apt signing key
   ansible.builtin.apt_key:
     url: https://packages.repository.com/gpg.key
     state: present
 {% endraw %}
-- name: add {{ role_name }} repository
+- name: Add {{ role_name }} repository
   ansible.builtin.apt_repository:
     filename: {{ role_name }}
     {% raw -%}

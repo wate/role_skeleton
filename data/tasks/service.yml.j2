@@ -1,5 +1,5 @@
 ---
-- name: {{ role_name }} is active and enabled on system startup
+- name: Service {{ role_name }} is active and enabled on system startup
   ansible.builtin.systemd:
     name: {{ role_name }}
     state: started
