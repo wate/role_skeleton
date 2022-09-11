@@ -1,5 +1,6 @@
 ---
 skip_list:
-  - 'role-name'
+  - role-name
+  - name[casing]
 warn_list:
-  - 'experimental'
+  - experimental
