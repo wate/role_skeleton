@@ -1,6 +1,6 @@
 ---
 {% raw -%}
-- name: Find variable file
+- name: Find pratform variable file
   ansible.builtin.set_fact:
     variable_file: "{{ lookup('first_found', params, errors='ignore') }}"
   vars:
@@ -14,19 +14,19 @@
 - name: Include variable file
   ansible.builtin.include_vars: "{{ variable_file }}"
   when: variable_file | length > 0
-- name: Install dependency packages
+- name: Include dependency task
   ansible.builtin.import_tasks: dependency.yml
   tags: dependency
-- name: Add repository
+- name: Include repository task
   ansible.builtin.import_tasks: repository.yml
   tags: repository
-- name: Install packages
+- name: Include package task
   ansible.builtin.import_tasks: package.yml
   tags: package
-- name: Create/update setting
+- name: Include setting task
   ansible.builtin.import_tasks: setting.yml
   tags: setting
-- name: Setup service
+- name: Include service task
   ansible.builtin.import_tasks: service.yml
   tags: service
 {% endraw %}

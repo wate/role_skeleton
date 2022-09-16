@@ -1,0 +1,6 @@
+---
+- name: Install {{ role_name }} packages
+  {% raw -%}
+  ansible.builtin.apt:
+    name: "{{ role_packages }}"
+{% endraw %}

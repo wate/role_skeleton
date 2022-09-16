@@ -1,21 +1,17 @@
 ---
 {% raw -%}
-- name: Install dependency packages
-  ansible.builtin.apt:
-    name:
-      - apt-transport-https
-      - ca-certificates
-      - curl
-      - gnupg
-- name: Add apt signing key
-  ansible.builtin.apt_key:
-    url: https://packages.repository.com/gpg.key
-    state: present
+- name: Find platform task file
+  ansible.builtin.set_fact:
+    include_task_file: "{{ lookup('first_found', params, errors='ignore') }}"
+  vars:
+    params:
+      files:
+        - '{{ ansible_facts.os_family }}/{{ ansible_facts.distribution }}/{{ ansible_facts.distribution_major_version }}.yml'
+        - '{{ ansible_facts.os_family }}/{{ ansible_facts.distribution }}.yml'
+        - '{{ ansible_facts.os_family }}.yml'
+      paths:
+        - tasks/repository
+- name: Add repository
+  ansible.builtin.include_tasks: "{{ include_task_file }}"
+  when: include_task_file | length > 0
 {% endraw %}
-- name: Add {{ role_name }} repository
-  ansible.builtin.apt_repository:
-    filename: {{ role_name }}
-    {% raw -%}
-    repo: deb https://packages.repository.com/debian {{ ansible_facts.distribution_release }} main
-    state: present
- {% endraw %}

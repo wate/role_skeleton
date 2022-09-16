@@ -1,6 +1,17 @@
 ---
-- name: Service {{ role_name }} is active and enabled on system startup
-  ansible.builtin.systemd:
-    name: {{ role_name }}
-    state: started
-    enabled: true
+{% raw -%}
+- name: Find platform task file
+  ansible.builtin.set_fact:
+    include_task_file: "{{ lookup('first_found', params, errors='ignore') }}"
+  vars:
+    params:
+      files:
+        - '{{ ansible_facts.os_family }}/{{ ansible_facts.distribution }}/{{ ansible_facts.distribution_major_version }}.yml'
+        - '{{ ansible_facts.os_family }}/{{ ansible_facts.distribution }}.yml'
+        - '{{ ansible_facts.os_family }}.yml'
+      paths:
+        - tasks/service
+- name: Setup service
+  ansible.builtin.include_tasks: "{{ include_task_file }}"
+  when: include_task_file | length > 0
+{% endraw %}
