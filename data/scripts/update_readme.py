@@ -67,7 +67,7 @@ if os.path.exists(ROLE_ROOT + DS + 'README.md'):
                     var_name = ''
 
                 if len(var_name) > 0:
-                    var_docs[var_name] = "\n".join(doc_block_lines)
+                    var_docs[var_name] = "  \n".join(doc_block_lines)
                     doc_block_lines = []
                     var_name = ''
 
