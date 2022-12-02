@@ -29,6 +29,7 @@ provisioner:
   config_options:
     defaults:
       hash_behaviour: merge
+      stdout_callback: yaml
   playbooks:
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
 # verifier:
