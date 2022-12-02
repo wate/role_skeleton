@@ -1,6 +1,8 @@
 ---
+use_default_rules: true
 skip_list:
-  - role-name
   - name[casing]
 warn_list:
+  - no-changed-when
+  - no-handler
   - experimental
