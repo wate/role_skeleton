@@ -1,8 +1,8 @@
 ---
 use_default_rules: true
-skip_list:
-  - name[casing]
+skip_list: []
 warn_list:
+  - name[casing]
   - no-changed-when
   - no-handler
   - experimental
