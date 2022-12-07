@@ -1,4 +1,5 @@
 ---
+# code: language=ansible
 - name: Verify
   hosts: all
   gather_facts: false

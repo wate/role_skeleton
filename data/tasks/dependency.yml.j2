@@ -1,5 +1,6 @@
 ---
 {% raw -%}
+# code: language=ansible
 - name: Find platform task file
   ansible.builtin.set_fact:
     include_task_file: "{{ lookup('first_found', params, errors='ignore') }}"
