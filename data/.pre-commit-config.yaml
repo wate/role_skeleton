@@ -1,0 +1,22 @@
+---
+# yamllint disable rule:quoted-strings
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-yaml
+      - id: fix-byte-order-marker
+      - id: mixed-line-ending
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+        args:
+          - --markdown-linebreak-ext=md
+      - id: no-commit-to-branch
+        args: [--branch, master, --branch, main, --branch, staging]
+  - repo: https://github.com/ansible/ansible-lint
+    rev: v6.9.1
+    hooks:
+      - id: ansible-lint
+        args: [--write]
