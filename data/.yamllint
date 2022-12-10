@@ -1,33 +1,80 @@
 ---
-# Based on ansible-lint config
 extends: default
 
+# @see https://yamllint.readthedocs.io/en/stable/rules.html
 rules:
-  braces:
-    max-spaces-inside: 1
-    level: error
-  brackets:
-    max-spaces-inside: 1
-    level: error
-  colons:
-    max-spaces-after: -1
-    level: error
-  commas:
-    max-spaces-after: -1
-    level: error
-  comments: disable
+  # braces:
+  #   forbid: false
+  #   min-spaces-inside: 0
+  #   max-spaces-inside: 0
+  #   min-spaces-inside-empty: -1
+  #   max-spaces-inside-empty: -1
+  # brackets:
+  #   forbid: false
+  #   min-spaces-inside: 0
+  #   max-spaces-inside: 0
+  #   min-spaces-inside-empty: -1
+  #   max-spaces-inside-empty: -1
+  # colons:
+  #   max-spaces-before: 0
+  #   max-spaces-after: 1
+  # commas:
+  #   max-spaces-before: 0
+  #   min-spaces-after: 1
+  #   max-spaces-after: 1
+  # comments:
+  #   require-starting-space: true
+  #   ignore-shebangs: true
+  #   min-spaces-from-content: 2
   comments-indentation: disable
-  document-start: disable
-  empty-lines:
-    max: 3
-    level: error
-  hyphens:
-    level: error
-  indentation: disable
-  key-duplicates: enable
-  line-length: disable
-  new-line-at-end-of-file: disable
-  new-lines:
-    type: unix
-  trailing-spaces: disable
-  truthy: disable
+  document-end:
+    present: false
+    level: warning
+  # document-start:
+  #   present: true
+  # indentation:
+  #   spaces: consistent
+  #   indent-sequences: true
+  #   check-multi-line-strings: false
+  # empty-lines:
+  #   max: 2
+  #   max-start: 0
+  #   max-end: 0
+  empty-values:
+    forbid-in-block-mappings: false
+    # forbid-in-flow-mappings: true
+  # float-values:
+  #   forbid-inf: false
+  #   forbid-nan: false
+  #   forbid-scientific-notation: false
+  #   require-numeral-before-decimal: false
+  # hyphens:
+  #   max-spaces-after: 1
+  #   level: error
+  # indentation:
+  #   spaces: consistent
+  #   indent-sequences: true
+  #   check-multi-line-strings: false
+  key-ordering: disable
+  # key-duplicates: enable
+  line-length:
+    max: 160
+    # allow-non-breakable-words: true
+    # allow-non-breakable-inline-mappings: false
+    level: warning
+  # new-line-at-end-of-file: enable
+  # new-lines:
+  #   type: unix
+  # octal-values:
+  #   forbid-implicit-octal: true
+  #   forbid-explicit-octal: true
+  # quoted-strings:
+  #   quote-type: any
+  #   required: true
+  #   extra-required: []
+  #   extra-allowed: []
+  #   allow-quoted-quotes: false
+  # trailing-spaces: {}
+  # truthy:
+  #   allowed-values: ['true', 'false']
+  #   check-keys: true
