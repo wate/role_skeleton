@@ -6,4 +6,5 @@ skip_list:
 warn_list:
   - no-changed-when
   - no-handler
+  - yaml[line-length]
   - experimental
