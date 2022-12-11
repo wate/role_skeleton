@@ -1,4 +1,5 @@
 ---
+# @see https://yamllint.readthedocs.io/en/stable/configuration.html
 extends: default
 
 # @see https://yamllint.readthedocs.io/en/stable/rules.html
