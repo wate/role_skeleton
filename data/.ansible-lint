@@ -1,10 +1,31 @@
 ---
 use_default_rules: true
+
+## 除外するディレクトリ/ファイル
+# exclude_paths:
+#   - .cache/
+#   - .github/
+#   - .devcontainer/
+#   - tests/
+
+## 無効にするルール
 skip_list:
   - role-name
   - name[casing]
+
+## 警告として扱うルール
 warn_list:
+  - experimental
   - no-changed-when
   - no-handler
   - yaml[line-length]
-  - experimental
+
+## autofix実行時に適用するルール
+# write_list:
+#   - all
+
+## 許可する追加コレクションのリスト
+only_builtins_allow_collections:
+  - community.general
+  - community.mysql
+  - community.postgresql
