@@ -23,9 +23,3 @@ warn_list:
 ## autofix実行時に適用するルール
 # write_list:
 #   - all
-
-## 許可する追加コレクションのリスト
-only_builtins_allow_collections:
-  - community.general
-  - community.mysql
-  - community.postgresql
