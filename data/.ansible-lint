@@ -1,5 +1,11 @@
 ---
+## ---------
 ## @see https://ansible-lint.readthedocs.io/configuring/
+## ---------
+
+## min, basic, moderate,safety, shared, production
+# profile: null
+
 use_default_rules: true
 
 ## 除外するディレクトリ/ファイル
