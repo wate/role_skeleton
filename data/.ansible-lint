@@ -19,10 +19,12 @@ skip_list:
 ## 警告として扱うルール
 warn_list:
   - experimental
+  ## yamllint default
   - yaml[comments]
   - yaml[comments-indentation]
   - yaml[document-start]
   - yaml[truthy]
+  ## custom
   - yaml[line-length]
   - no-changed-when
   - no-handler
