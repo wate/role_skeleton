@@ -21,8 +21,7 @@ rules:
   # comments:
   #   level: warning
   ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.comments_indentation
-  # comments-indentation:
-  #   level: warning
+  comments-indentation: disable
   ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.document_end
   # document-end: disable
   ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.document_start
