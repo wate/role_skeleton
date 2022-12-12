@@ -13,19 +13,28 @@ use_default_rules: true
 
 ## 無効にするルール
 skip_list:
+  ## ansible-lint default warning level
   - role-name
   - name[casing]
 
 ## 警告として扱うルール
 warn_list:
+  ## ansible-lint default
+  - avoid-implicit
   - experimental
+  - fqcn[action]
+  - fqcn[redirect]
+  - jinja[spacing]
+  - name[play]
+  - name[prefix]
+  - warning[empty-playbook]
+  - role-name[path]
   ## yamllint default
   - yaml[comments]
   - yaml[comments-indentation]
   - yaml[document-start]
   - yaml[truthy]
   ## custom
-  - yaml[line-length]
   - no-changed-when
   - no-handler
 
