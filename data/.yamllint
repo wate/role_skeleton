@@ -1,81 +1,62 @@
 ---
-# @see https://yamllint.readthedocs.io/en/stable/configuration.html
+## @see https://yamllint.readthedocs.io/en/stable/configuration.html
 extends: default
 
-# @see https://yamllint.readthedocs.io/en/stable/rules.html
+# yaml-files:
+#   - '*.yaml'
+#   - '*.yml'
+#   - '.yamllint'
+
+## @see https://yamllint.readthedocs.io/en/stable/rules.html
 rules:
-  # braces:
-  #   forbid: false
-  #   min-spaces-inside: 0
-  #   max-spaces-inside: 0
-  #   min-spaces-inside-empty: -1
-  #   max-spaces-inside-empty: -1
-  # brackets:
-  #   forbid: false
-  #   min-spaces-inside: 0
-  #   max-spaces-inside: 0
-  #   min-spaces-inside-empty: -1
-  #   max-spaces-inside-empty: -1
-  # colons:
-  #   max-spaces-before: 0
-  #   max-spaces-after: 1
-  # commas:
-  #   max-spaces-before: 0
-  #   min-spaces-after: 1
-  #   max-spaces-after: 1
+  ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.braces
+  # braces: enable
+  ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.brackets
+  # brackets: enable
+  ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.colons
+  # colons: enable
+  ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.commas
+  # commas: enable
+  ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.comments
   # comments:
-  #   require-starting-space: true
-  #   ignore-shebangs: true
-  #   min-spaces-from-content: 2
-  comments-indentation: disable
-  document-end:
-    present: false
-    level: warning
+  #   level: warning
+  ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.comments_indentation
+  # comments-indentation:
+  #   level: warning
+  ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.document_end
+  # document-end: disable
+  ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.document_start
   # document-start:
-  #   present: true
-  # indentation:
-  #   spaces: consistent
-  #   indent-sequences: true
-  #   check-multi-line-strings: false
-  # empty-lines:
-  #   max: 2
-  #   max-start: 0
-  #   max-end: 0
-  empty-values:
-    forbid-in-block-mappings: false
-    # forbid-in-flow-mappings: true
-  # float-values:
-  #   forbid-inf: false
-  #   forbid-nan: false
-  #   forbid-scientific-notation: false
-  #   require-numeral-before-decimal: false
-  # hyphens:
-  #   max-spaces-after: 1
-  #   level: error
-  # indentation:
-  #   spaces: consistent
-  #   indent-sequences: true
-  #   check-multi-line-strings: false
-  key-ordering: disable
+  #   level: warning
+  ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.empty_lines
+  # empty-lines: enable
+  ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.empty_values
+  # empty-values: disable
+  ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.float_values
+  # float-values: disable
+  ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.hyphens
+  # hyphens: enable
+  ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.indentation
+  # indentation: enable
+  ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.key_duplicates
   # key-duplicates: enable
+  ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.key_ordering
+  # key-ordering: disable
+  ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.line_length
   line-length:
     max: 160
     # allow-non-breakable-words: true
     # allow-non-breakable-inline-mappings: false
-    level: warning
+  ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.new_line_at_end_of_file
   # new-line-at-end-of-file: enable
-  # new-lines:
-  #   type: unix
-  # octal-values:
-  #   forbid-implicit-octal: true
-  #   forbid-explicit-octal: true
-  # quoted-strings:
-  #   quote-type: any
-  #   required: true
-  #   extra-required: []
-  #   extra-allowed: []
-  #   allow-quoted-quotes: false
-  # trailing-spaces: {}
+  ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.new_lines
+  # new-lines: enable
+  ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.octal_values
+  # octal-values: disable
+  ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.quoted_strings
+  # quoted-strings: disable
+  ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.trailing_spaces
+  # trailing-spaces: enable
+  ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.truthy
   # truthy:
-  #   allowed-values: ['true', 'false']
-  #   check-keys: true
+  #   level: warning

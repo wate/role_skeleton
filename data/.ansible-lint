@@ -19,9 +19,13 @@ skip_list:
 ## 警告として扱うルール
 warn_list:
   - experimental
+  - yaml[comments]
+  - yaml[comments-indentation]
+  - yaml[document-start]
+  - yaml[truthy]
+  - yaml[line-length]
   - no-changed-when
   - no-handler
-  - yaml[line-length]
 
 ## autofix実行時に適用するルール
 # write_list:
