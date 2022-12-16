@@ -58,4 +58,4 @@ warn_list:
 # Enforce variable names to follow pattern below, in addition to Ansible own
 # requirements, like avoiding python identifiers. To disable add `var-naming`
 # to skip_list.
-# var_naming_pattern: "^{role}_[a-z0-9_]*[a-z]$"
+var_naming_pattern: "^{role}_[a-z0-9_]*[a-z]$"
