@@ -55,4 +55,7 @@ warn_list:
 # only_builtins_allow_modules:
 #   - example_module
 
-var_naming_pattern: "^{{ role_name }}_[a-z0-9_]*[a-z]$"
+# Enforce variable names to follow pattern below, in addition to Ansible own
+# requirements, like avoiding python identifiers. To disable add `var-naming`
+# to skip_list.
+# var_naming_pattern: "^{{ role_name }}_[a-z0-9_]*[a-z]$"
