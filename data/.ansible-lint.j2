@@ -13,7 +13,6 @@ use_default_rules: true
 #   - .cache/
 #   - .github/
 #   - .devcontainer/
-#   - tests/
 
 ## @see https://ansible-lint.readthedocs.io/rules/
 
@@ -55,3 +54,5 @@ warn_list:
 # List of additions modules to allow in only-builtins rule.
 # only_builtins_allow_modules:
 #   - example_module
+
+var_naming_pattern: "^{{ role_name }}_[a-z0-9_]*$"
