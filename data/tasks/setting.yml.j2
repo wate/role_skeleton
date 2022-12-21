@@ -13,6 +13,7 @@
       paths:
         - tasks/setting
 - name: Create/update setting
-  ansible.builtin.include_tasks: "{{ include_task_file }}"
+  ansible.builtin.include_tasks:
+    file: "{{ include_task_file }}"
   when: include_task_file | length > 0
 {% endraw %}
