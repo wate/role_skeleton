@@ -3,6 +3,7 @@
 - name: Verify
   hosts: all
   gather_facts: false
+  check_mode: true
   become: true
   tasks:
     - name: Example assertion
@@ -21,7 +22,6 @@
     #   ansible.builtin.user:
     #     name: www-data
     #     system: true
-    #   check_mode: true
     #   register: result
     # - name: Assert user
     #   ansible.builtin.assert:
@@ -32,7 +32,6 @@
     #   ansible.builtin.group:
     #     name: www-data
     #     system: true
-    #   check_mode: true
     #   register: result
     # - name: Assert group
     #   ansible.builtin.assert:
