@@ -21,3 +21,5 @@ repos:
     hooks:
       - id: ansible-lint
         args: [--write]
+        additional_dependencies:
+          - ansible
