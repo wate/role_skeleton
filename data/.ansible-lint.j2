@@ -17,7 +17,10 @@ use_default_rules: true
 ## @see https://ansible-lint.readthedocs.io/rules/
 
 ## 無効にするルール
-skip_list: []
+skip_list:
+  - role-name
+  - name[casing]
+
 ## 警告として扱うルール
 warn_list:
   ## ansible-lint default
@@ -36,8 +39,6 @@ warn_list:
   - yaml[document-start]
   - yaml[truthy]
   ## custom
-  - role-name
-  - name[casing]
   - no-changed-when
   - no-handler
 
