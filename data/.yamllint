@@ -57,5 +57,6 @@ rules:
   ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.trailing_spaces
   # trailing-spaces: enable
   ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.truthy
-  # truthy:
-  #   level: warning
+  truthy:
+    level: warning
+    check-keys: false
