@@ -7,14 +7,14 @@
       - ca-certificates
       - curl
       - gnupg
-- name: Add apt signing key
-  ansible.builtin.apt_key:
-    url: https://packages.repository.com/gpg.key
-    state: present
-- name: Add {{ role_name }} repository
-  ansible.builtin.apt_repository:
-    filename: {{ role_name }}
-    {% raw -%}
-    repo: deb https://packages.repository.com/debian {{ ansible_facts.distribution_release }} main
-    state: present
+# - name: Add apt signing key
+#   ansible.builtin.apt_key:
+#     url: https://packages.repository.com/gpg.key
+#     state: present
+# - name: Add {{ role_name }} repository
+#   ansible.builtin.apt_repository:
+#     filename: {{ role_name }}
+#     {% raw -%}
+#     repo: deb https://packages.repository.com/debian {{ ansible_facts.distribution_release }} main
+#     state: present
 {% endraw %}
