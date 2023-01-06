@@ -16,7 +16,7 @@
     # - name: Assert package
     #   ansible.builtin.assert:
     #     that:
-    #       - ansible_facts.packages['nginx']
+    #       - ansible_facts.packages['package'] is defined
     # ## ユーザーのテスト
     # - name: Check user
     #   ansible.builtin.user:
@@ -62,9 +62,9 @@
     # - name: Assert service
     #   ansible.builtin.assert:
     #     that:
-    #       - ansible_facts.services['nginx.service']
-    #       - ansible_facts.services['nginx.service']['state'] == 'running'
-    #       - ansible_facts.services['nginx.service']['status'] == 'enabled'
+    #       - ansible_facts.services['package.service'] is defined
+    #       - ansible_facts.services['package.service']['state'] == 'running'
+    #       - ansible_facts.services['package.service']['status'] == 'enabled'
     # ## 待受ポートのテスト
     # - name: Gather facts on listening ports
     #   community.general.listen_ports_facts:
@@ -76,4 +76,4 @@
     # - name: Assert listen port
     #   ansible.builtin.assert:
     #     that:
-    #       - 80 in listen_tcp_posts
+    #       - 123456 in listen_tcp_posts
