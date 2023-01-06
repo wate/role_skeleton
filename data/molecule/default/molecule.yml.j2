@@ -20,8 +20,8 @@ platforms:
     pre_build_image: true
     # driver:vagrant
     box: wate/debian-11
-    memory: 1024
-    cpus: 1
+    # memory: 1024
+    # cpus: 1
   - name: buster
     groups:
       - family_debian
@@ -37,8 +37,8 @@ platforms:
     pre_build_image: true
     # driver:vagrant
     box: wate/debian-10
-    memory: 1024
-    cpus: 1
+    # memory: 1024
+    # cpus: 1
 lint: |
   set -e
   yamllint .
