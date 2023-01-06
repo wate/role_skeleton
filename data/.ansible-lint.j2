@@ -47,10 +47,8 @@ warn_list:
 #   - all
 
 # List of additional collections to allow in only-builtins rule.
-only_builtins_allow_collections:
-  - community.general
-  # - community.mysql
-  # - community.postgresql
+# only_builtins_allow_collections:
+#  - community.general
 
 # List of additions modules to allow in only-builtins rule.
 # only_builtins_allow_modules:
@@ -59,4 +57,4 @@ only_builtins_allow_collections:
 # Enforce variable names to follow pattern below, in addition to Ansible own
 # requirements, like avoiding python identifiers. To disable add `var-naming`
 # to skip_list.
-var_naming_pattern: "^{{ role_name }}_[a-z0-9_]*[a-z]$"
+#var_naming_pattern: "^{{ role_name }}_[a-z0-9_]*[a-z]$"
