@@ -3,7 +3,7 @@
 - name: Verify
   hosts: all
   gather_facts: false
-  check_mode: true
+  # check_mode: true
   become: true
   tasks:
     - name: Example assertion
