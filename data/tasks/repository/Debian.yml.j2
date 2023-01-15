@@ -14,7 +14,5 @@
 # - name: Add {{ role_name }} repository
 #   ansible.builtin.apt_repository:
 #     filename: {{ role_name }}
-#     {% raw -%}
-#     repo: deb https://packages.repository.com/debian {{ ansible_facts.distribution_release }} main
+#     repo: deb https://packages.repository.com/debian {% raw %}{{ ansible_facts.distribution_release }}{% endraw %} main
 #     state: present
-{% endraw %}
