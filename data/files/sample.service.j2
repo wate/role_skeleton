@@ -1,0 +1,16 @@
+[Unit]
+Description=Sample
+# Requires=network.service
+# After=network.target
+
+[Service]
+Type=simple
+# EnvironmentFile=/etc/default/sample
+# Environment=VAR_NAME=VAR_VALUE
+WorkingDirectory={{ '{{ '}}{{ role_name }}_home{{ ' }}' }}
+User={{ '{{ '}}{{ role_name }}_user{{ ' }}' }}
+Group={{ '{{ '}}{{ role_name }}_group{{ ' }}' }}
+ExecStart={{ '{{ '}}{{ role_name }}_home{{ ' }}' }}/bin/execute
+
+[Install]
+WantedBy=multi-user.target

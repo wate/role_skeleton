@@ -1,16 +1,16 @@
 ---
 # code: language=ansible
-- name: Create/update setting file
-  ansible.builtin.template:
-    src: {{ role_name }}.conf.j2
-    dest: /erc/{{ role_name }}/{{ role_name }}.conf
-    mode: "0644"
-- name: Add/update option setting
-  ansible.builtin.lineinfile:
-    path: /etc/{{ role_name }}/{{ role_name }}.conf
-    regexp: ^(#\\s+)?option_name=
-    line: option_name=option_value
-- name: Add/update custom setting
-  ansible.builtin.blockinfile:
-    path: /etc/{{ role_name }}/{{ role_name }}.conf
-    block: "{{ '{{ ' }}{{ role_name }}_extra_cfg | default(''){{ ' }}' }}"
+# - name: Create/update setting file
+#   ansible.builtin.template:
+#     src: {{ role_name }}.conf.j2
+#     dest: /erc/{{ role_name }}/{{ role_name }}.conf
+#     mode: "0644"
+# - name: Add/update option setting
+#   ansible.builtin.lineinfile:
+#     path: /etc/{{ role_name }}/{{ role_name }}.conf
+#     regexp: ^(#\\s+)?option_name=
+#     line: option_name=option_value
+# - name: Add/update custom setting
+#   ansible.builtin.blockinfile:
+#     path: /etc/{{ role_name }}/{{ role_name }}.conf
+#     block: "{{ '{{ ' }}{{ role_name }}_extra_cfg | default(''){{ ' }}' }}"

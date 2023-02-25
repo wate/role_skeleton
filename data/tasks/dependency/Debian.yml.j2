@@ -3,3 +3,19 @@
 - name: Install {{ role_name }} dependency packages
   ansible.builtin.apt:
     name: "{{ '{{ ' }}{{ role_name }}_dependency_packages | default([]){{ ' }}' }}"
+- name: Add {{ role_name }} group
+  ansible.builtin.group:
+    name: "{{ '{{ ' }}{{ role_name }}_user{{ ' }}' }}"
+    system: true
+- name: Add {{ role_name }} user
+  ansible.builtin.user:
+    name: "{{ '{{ ' }}{{ role_name }}_user{{ ' }}' }}"
+    group: "{{ '{{ ' }}{{ role_name }}_group{{ ' }}' }}"
+    system: true
+- name: Create install directory
+  ansible.builtin.file:
+    path: "{{ '{{ ' }}{{ role_name }}_home{{ ' }}' }}"
+    owner: "{{ '{{ ' }}{{ role_name }}_user{{ ' }}' }}"
+    group: "{{ '{{ ' }}{{ role_name }}_group{{ ' }}' }}"
+    state: directory
+    mode: "0755"
