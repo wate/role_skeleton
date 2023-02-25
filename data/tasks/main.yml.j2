@@ -17,27 +17,27 @@
     file: "{{ variable_file }}"
   when: variable_file | length > 0
 {% endraw %}
-- name: Include dependency task
+- name: Import dependency task
   ansible.builtin.import_tasks:
     file: dependency.yml
   tags:
     - role_{{ role_name }}_dependency
-- name: Include repository task
+- name: Import repository task
   ansible.builtin.import_tasks:
     file: repository.yml
   tags:
     - role_{{ role_name }}_repository
-- name: Include package task
+- name: Import package task
   ansible.builtin.import_tasks:
     file: package.yml
   tags:
     - role_{{ role_name }}_package
-- name: Include setting task
+- name: Import setting task
   ansible.builtin.import_tasks:
     file: setting.yml
   tags:
     - role_{{ role_name }}_setting
-- name: Include service task
+- name: Import service task
   ansible.builtin.import_tasks:
     file: service.yml
   tags:
