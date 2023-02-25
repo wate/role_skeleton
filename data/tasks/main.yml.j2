@@ -16,24 +16,29 @@
   ansible.builtin.include_vars:
     file: "{{ variable_file }}"
   when: variable_file | length > 0
+{% endraw %}
 - name: Include dependency task
   ansible.builtin.import_tasks:
     file: dependency.yml
-  tags: dependency
+  tags:
+    - role_{{ role_name }}_dependency
 - name: Include repository task
   ansible.builtin.import_tasks:
     file: repository.yml
-  tags: repository
+  tags:
+    - role_{{ role_name }}_repository
 - name: Include package task
   ansible.builtin.import_tasks:
     file: package.yml
-  tags: package
+  tags:
+    - role_{{ role_name }}_package
 - name: Include setting task
   ansible.builtin.import_tasks:
     file: setting.yml
-  tags: setting
+  tags:
+    - role_{{ role_name }}_setting
 - name: Include service task
   ansible.builtin.import_tasks:
     file: service.yml
-  tags: service
-{% endraw %}
+  tags:
+    - role_{{ role_name }}_service
