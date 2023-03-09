@@ -1,5 +1,27 @@
 ---
 # code: language=ansible
+# - name: Set Install version variable
+#   when: {{ role_name }}_version == 'latest'
+#   block:
+#     - name: Get latest release
+#       ansible.builtin.uri:
+#         url: https://api.github.com/repos/{{ '{{ ' }}{{ role_name }}_repo_owner{{ ' }}' }}/{{ '{{ ' }}{{ role_name }}_repo_name{{ ' }}' }}/releases/latest
+#         headers:
+#           Accept: application/vnd.github+json
+#       register: latest_releases
+#     - name: Set package version variable
+#       ansible.builtin.set_fact:
+#         {{ role_name }}_version: "{{ '{{ ' }}latest_releases.json.tag_name{{ ' }}' }}"
+# - name: Set pckage file variable
+#   ansible.builtin.set_fact:
+#     package_file: {{ role_name }}_{{ '{{ ' }}{{ role_name }}_version[1:]{{ ' }}' }}_{{ '{{ ' }}architecture_files[ansible_facts['architecture']]{{ ' }}' }}.deb
+#   vars:
+#     architecture_files:
+#       x86_64: amd64
+#       aarch64: arm64
+# - name: Install {{ role_name }}
+#   ansible.builtin.apt:
+#     deb: https://github.com/{{ '{{ ' }}{{ role_name }}_repo_owner{{ ' }}' }}/{{ '{{ ' }}{{ role_name }}_repo_name{{ ' }}' }}/releases/download/{{ '{{ ' }}{{ role_name }}_version{{ ' }}' }}/{{ '{{ ' }}package_file{{ ' }}' }}
 - name: Install {{ role_name }} packages
   ansible.builtin.apt:
     name: "{{ '{{ ' }}{{ role_name }}_packages{{ ' }}' }}"
