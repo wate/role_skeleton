@@ -14,3 +14,6 @@
 
 ### Molecule ###
 .env.yml
+
+### VisualStudioCode ###
+/.vscode/
