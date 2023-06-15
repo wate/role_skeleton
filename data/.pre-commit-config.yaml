@@ -15,6 +15,10 @@ repos:
           - --markdown-linebreak-ext=md
       - id: no-commit-to-branch
         args: [--branch, master, --branch, main, --branch, staging]
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.17.0
+    hooks:
+      - id: gitleaks
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.31.0
     hooks:
