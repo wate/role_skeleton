@@ -39,23 +39,6 @@ platforms:
     box: wate/debian-11
     memory: 1024
     cpus: 1
-  - name: buster
-    groups:
-      - family_debian
-    children:
-      - debian
-    # driver:docker
-    image: geerlingguy/docker-debian10-ansible:latest
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:rw
-    cgroupns_mode: host
-    privileged: true
-    pre_build_image: true
-    # driver:vagrant
-    box: wate/debian-10
-    memory: 1024
-    cpus: 1
 provisioner:
   name: ansible
   options:
