@@ -6,10 +6,10 @@
   gather_facts: true
   become: true
   pre_tasks:
-    - name: Update cache(Debian)
+    - name: Update cache(apt)
       ansible.builtin.apt:
         update_cache: true
-      when: ansible_facts.os_family == 'Debian'
+      when: ansible_facts.pkg_mgr == 'apt'
     - name: Update cache(yum)
       ansible.builtin.yum:
         update_cache: true
