@@ -5,7 +5,7 @@
     name: "{{ '{{ ' }}{{ role_name }}_dependency_packages | default([]){{ ' }}' }}"
 - name: Add {{ role_name }} group
   ansible.builtin.group:
-    name: "{{ '{{ ' }}{{ role_name }}_user{{ ' }}' }}"
+    name: "{{ '{{ ' }}{{ role_name }}_group{{ ' }}' }}"
     system: true
 - name: Add {{ role_name }} user
   ansible.builtin.user:
