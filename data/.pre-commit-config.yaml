@@ -4,7 +4,7 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.5.0
     hooks:
       - id: check-yaml
       - id: fix-byte-order-marker
@@ -15,18 +15,14 @@ repos:
           - --markdown-linebreak-ext=md
       - id: no-commit-to-branch
         args: [--branch, master, --branch, main, --branch, staging]
-  - repo: https://github.com/gitleaks/gitleaks
-    rev: v8.17.0
-    hooks:
-      - id: gitleaks
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.31.0
+    rev: v1.33.0
     hooks:
       - id: yamllint
   - repo: https://github.com/ansible/ansible-lint
-    rev: v6.16.1
+    rev: v6.22.1
     hooks:
       - id: ansible-lint
-        args: [--write]
+        args: [--fix]
         additional_dependencies:
           - ansible

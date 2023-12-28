@@ -5,12 +5,12 @@ default: true
 extends:
 ### ------------------
 ## MD001 - Heading levels should only increment by one level at a time
-# header-increment: true
+# heading-increment: true
 ## MD002 - First heading should be a top-level heading
 # first-header-h1:
 #   level: 1
 ## MD003 - Heading style
-header-style:
+heading-style:
   style: setext_with_atx
 ## MD004 - Unordered list style
 # ul-style:
@@ -86,9 +86,7 @@ line-length:
 # MD023 - Headings must start at the beginning of the line
 # header-start-left: true
 # MD024 - Multiple headings with the same content
-no-duplicate-header:
-  # Only check sibling headings
-  allow_different_nesting: false
+no-duplicate-heading:
   # Only check sibling headings
   siblings_only: true
 ## MD025 - Multiple top-level headings in the same document
@@ -136,7 +134,7 @@ no-bare-urls: false
 #   # Horizontal rule style
 #   style: "consistent"
 ## MD036 - Emphasis used instead of a heading
-# no-emphasis-as-header:
+# no-emphasis-as-heading:
 #   # Punctuation characters
 #   punctuation: ".,;:!?。，；：！？"
 ## MD037 - Spaces inside emphasis markers
@@ -156,9 +154,9 @@ fenced-code-language: false
 ## MD042 - No empty links
 # no-empty-links: true
 ## MD043 - Required heading structure
-# required-headers:
+# required-headings:
 #   # List of headings
-#   headers: []
+#   headings: []
 ## MD044 - Proper names should have the correct capitalization
 # proper-names:
 #   # List of proper names
