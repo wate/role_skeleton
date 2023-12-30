@@ -3,62 +3,75 @@
 - name: Verify
   hosts: all
   gather_facts: false
-  # check_mode: true
   become: true
   tasks:
-    - name: Example assertion
-      ansible.builtin.assert:
-        that: true
+    ## テストの前処理
+    - name: Gather package facts
+      ansible.builtin.package_facts:
+        manager: auto
+    - name: Gather service facts
+      ansible.builtin.service_facts:
+    - name: Gather facts on listening ports
+      community.general.listen_ports_facts:
+        command: ss
+      become: true
+    - name: Set assert variables
+      ansible.builtin.set_fact:
+        listen_tcp_posts: "{{ ansible_facts.tcp_listen | map(attribute='port') | unique | sort | list }}"
+        listen_udp_posts: "{{ ansible_facts.udp_listen | map(attribute='port') | unique | sort | list }}"
     # ## パッケージのテスト
-    # - name: Gather the package facts
-    #   ansible.builtin.package_facts:
-    #     manager: auto
     # - name: Assert package
     #   ansible.builtin.assert:
     #     that:
     #       - ansible_facts.packages['package'] is defined
     # ## ユーザーのテスト
-    # - name: Check user
-    #   ansible.builtin.user:
-    #     name: www-data
-    #     system: true
-    #   register: result
-    # - name: Assert user
-    #   ansible.builtin.assert:
-    #     that:
-    #       - result is not changed
+    # - name: Test user
+    #   block:
+    #     - name: Check user
+    #       ansible.builtin.user:
+    #         name: www-data
+    #         system: true
+    #       check_mode: true
+    #       register: result
+    #     - name: Assert user
+    #       ansible.builtin.assert:
+    #         that:
+    #           - result is not changed
     # ## グループのテスト
-    # - name: Check group
-    #   ansible.builtin.group:
-    #     name: www-data
-    #     system: true
-    #   register: result
-    # - name: Assert group
-    #   ansible.builtin.assert:
-    #     that:
-    #       - result is not changed
-    # # ファイルのテスト
-    # - name: Check virtualhost setting
-    #   ansible.builtin.stat:
-    #     path: /etc/nginx/sites-available/default
-    #   register: result
-    # - name: Assert file
-    #   ansible.builtin.assert:
-    #     that:
-    #       - result.stat.exists
-    # - name: Check virtualhost enabled
-    #   ansible.builtin.stat:
-    #     path: /etc/nginx/sites-enabled/default
-    #   register: result
-    # - name: Assert file
-    #   ansible.builtin.assert:
-    #     that:
-    #       - result.stat.exists
-    #       - result.stat.islnk
-    #       - result.stat.lnk_source == '/etc/nginx/sites-available/default'
-    # ## サービスのテスト
-    # - name: Populate service facts
-    #   ansible.builtin.service_facts:
+    # - name: Test user
+    #   block:
+    #     - name: Check group
+    #       ansible.builtin.group:
+    #         name: www-data
+    #         system: true
+    #       check_mode: true
+    #       register: result
+    #     - name: Assert group
+    #       ansible.builtin.assert:
+    #         that:
+    #           - result is not changed
+    # ## ファイルのテスト
+    # - name: Test file
+    #   block:
+    #     - name: Check virtualhost setting
+    #       ansible.builtin.stat:
+    #         path: /etc/nginx/sites-available/default
+    #       register: result
+    #     - name: Assert file
+    #       ansible.builtin.assert:
+    #         that:
+    #           - result.stat.exists
+    #     - name: Check virtualhost enabled
+    #       ansible.builtin.stat:
+    #         path: /etc/nginx/sites-enabled/default
+    #       register: result
+    #     - name: Assert file
+    #       ansible.builtin.assert:
+    #         that:
+    #           - result.stat.exists
+    #           - result.stat.islnk
+    #           - result.stat.lnk_source == '/etc/nginx/sites-available/default'
+    ## サービスのテスト
     # - name: Assert service
     #   ansible.builtin.assert:
     #     that:
@@ -66,13 +79,6 @@
     #       - ansible_facts.services['package.service']['state'] == 'running'
     #       - ansible_facts.services['package.service']['status'] == 'enabled'
     # ## 待受ポートのテスト
-    # - name: Gather facts on listening ports
-    #   community.general.listen_ports_facts:
-    #     command: ss
-    # - name: Set assert variables
-    #   ansible.builtin.set_fact:
-    #     listen_tcp_posts: "{{ ansible_facts.tcp_listen | map(attribute='port') | unique | list }}"
-    #     listen_udp_posts: "{{ ansible_facts.udp_listen | map(attribute='port') | unique | list }}"
     # - name: Assert listen port
     #   ansible.builtin.assert:
     #     that:
