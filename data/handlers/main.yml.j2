@@ -1,10 +1,10 @@
 # code: language=ansible
 ---
 # - name: Restart {{ role_name }}
-#   ansible.builtin.systemd:
+#   ansible.builtin.systemd_service:
 #     state: restarted
 #     name: {{ role_name }}
 # - name: Reload {{ role_name }}
-#   ansible.builtin.systemd:
+#   ansible.builtin.systemd_service:
 #     state: reloaded
 #     name: {{ role_name }}
