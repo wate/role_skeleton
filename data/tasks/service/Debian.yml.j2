@@ -7,7 +7,7 @@
     mode: "0644"
   notify: restart {{ role_name }}
 - name: Service {{ role_name }} is active and enabled on system startup
-  ansible.builtin.systemd:
+  ansible.builtin.systemd_service:
     name: {{ role_name }}
     state: started
     enabled: true

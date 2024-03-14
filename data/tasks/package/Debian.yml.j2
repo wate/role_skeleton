@@ -3,11 +3,21 @@
 # - name: Set Install version variable
 #   when: {{ role_name }}_version == 'latest'
 #   block:
+#     - name: Set Github API request header
+#       ansible.builtin.set_fact:
+#         github_api_request_headers:
+#           Accept: application/vnd.github+json
+#     - name: Merge Github API Authorization request header
+#       ansible.builtin.set_fact:
+#         github_api_request_headers: "{{ '{{ ' }}github_api_request_headers | combine(merge_reauest_header){{ ' }}' }}"
+#       vars:
+#         merge_reauest_header:
+#           Authorization: Bearer {{ '{{ ' }}lookup('env', 'GITHUB_TOKEN'){{ ' }}' }}
+#       when: lookup('env', 'GITHUB_TOKEN') | length > 0
 #     - name: Get latest release
 #       ansible.builtin.uri:
 #         url: https://api.github.com/repos/{{ '{{ ' }}{{ role_name }}_repo_owner{{ ' }}' }}/{{ '{{ ' }}{{ role_name }}_repo_name{{ ' }}' }}/releases/latest
-#         headers:
-#           Accept: application/vnd.github+json
+#         headers: "{{ '{{ ' }}github_api_request_headers{{ ' }}' }}"
 #       register: latest_releases
 #     - name: Set package version variable
 #       ansible.builtin.set_fact:
