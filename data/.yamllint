@@ -10,7 +10,9 @@ extends: default
 ## @see https://yamllint.readthedocs.io/en/stable/rules.html
 rules:
   ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.braces
-  # braces: enable
+  braces:
+    min-spaces-inside: 0
+    max-spaces-inside: 1
   ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.brackets
   # brackets: enable
   ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.colons
@@ -18,10 +20,11 @@ rules:
   ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.commas
   # commas: enable
   ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.comments
-  # comments:
+  comments:
   #   level: warning
+    min-spaces-from-content: 1
   ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.comments_indentation
-  comments-indentation: disable
+  comments-indentation: false
   ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.document_end
   # document-end: disable
   ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.document_start
@@ -51,7 +54,9 @@ rules:
   ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.new_lines
   # new-lines: enable
   ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.octal_values
-  # octal-values: disable
+  octal-values:
+    forbid-implicit-octal: true
+    forbid-explicit-octal: true
   ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.quoted_strings
   # quoted-strings: disable
   ## https://yamllint.readthedocs.io/en/stable/rules.html#module-yamllint.rules.trailing_spaces
