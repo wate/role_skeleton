@@ -32,24 +32,24 @@
     #         name: www-data
     #         system: true
     #       check_mode: true
-    #       register: result
+    #       register: user_result
     #     - name: Assert user
     #       ansible.builtin.assert:
     #         that:
-    #           - result is not changed
+    #           - user_result is not changed
     # ## グループのテスト
-    # - name: Test user
+    # - name: Test group
     #   block:
     #     - name: Check group
     #       ansible.builtin.group:
     #         name: www-data
     #         system: true
     #       check_mode: true
-    #       register: result
+    #       register: group_result
     #     - name: Assert group
     #       ansible.builtin.assert:
     #         that:
-    #           - result is not changed
+    #           - group_result is not changed
     # ## ファイルのテスト
     # - name: Test file
     #   block:
