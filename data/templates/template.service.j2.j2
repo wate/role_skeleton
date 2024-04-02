@@ -11,6 +11,7 @@ WorkingDirectory={{ '{{ '}}{{ role_name }}_home{{ ' }}' }}
 User={{ '{{ '}}{{ role_name }}_user{{ ' }}' }}
 Group={{ '{{ '}}{{ role_name }}_group{{ ' }}' }}
 ExecStart={{ '{{ '}}{{ role_name }}_home{{ ' }}' }}/bin/execute
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
