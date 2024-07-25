@@ -24,9 +24,9 @@
 #         {{ role_name }}_version: "{{ '{{ ' }}latest_releases.json.tag_name{{ ' }}' }}"
 # - name: Set package file variable
 #   ansible.builtin.set_fact:
-#     package_file: {{ role_name }}_{{ '{{ ' }}{{ role_name }}_version[1:]{{ ' }}' }}_{{ '{{ ' }}architecture_files[ansible_facts['architecture']]{{ ' }}' }}.deb
+#     package_file: {{ role_name }}_{{ '{{ ' }}{{ role_name }}_version[1:]{{ ' }}' }}_{{ '{{ ' }}arch_type_maps[ansible_facts['architecture']]{{ ' }}' }}.deb
 #   vars:
-#     architecture_files:
+#     arch_type_maps:
 #       x86_64: amd64
 #       aarch64: arm64
 # - name: Install {{ role_name }}
