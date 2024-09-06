@@ -4,7 +4,7 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v4.6.0
     hooks:
       - id: check-yaml
       - id: fix-byte-order-marker
@@ -16,11 +16,11 @@ repos:
       - id: no-commit-to-branch
         args: [--branch, master, --branch, main, --branch, staging]
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.33.0
+    rev: v1.35.1
     hooks:
       - id: yamllint
   - repo: https://github.com/ansible/ansible-lint
-    rev: v6.22.1
+    rev: v24.7.0
     hooks:
       - id: ansible-lint
         additional_dependencies:
