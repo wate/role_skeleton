@@ -11,11 +11,10 @@
         manager: auto
     - name: Gather service facts
       ansible.builtin.service_facts:
-    - name: Gather facts on listening ports
+    - name: Gather listen ports facts
       community.general.listen_ports_facts:
         command: ss
-      become: true
-    - name: Set assert variables
+    - name: Set listen ports variables
       ansible.builtin.set_fact:
         listen_tcp_posts: "{{ ansible_facts.tcp_listen | map(attribute='port') | unique | sort | list }}"
         listen_udp_posts: "{{ ansible_facts.udp_listen | map(attribute='port') | unique | sort | list }}"
