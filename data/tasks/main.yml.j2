@@ -12,33 +12,30 @@
         - "{{ ansible_facts.os_family }}.yml"
       paths:
         - vars
+  tags: always
 - name: Include variable file
   ansible.builtin.include_vars:
     file: "{{ variable_file }}"
   when: variable_file | length > 0
+  tags: always
 {% endraw %}
 - name: Import repository task
   ansible.builtin.import_tasks:
     file: repository.yml
-  tags:
-    - role_{{ role_name }}_repository
+  tags: role_{{ role_name }}_repository
 - name: Import dependency task
   ansible.builtin.import_tasks:
     file: dependency.yml
-  tags:
-    - role_{{ role_name }}_dependency
+  tags: role_{{ role_name }}_dependency
 - name: Import package task
   ansible.builtin.import_tasks:
     file: package.yml
-  tags:
-    - role_{{ role_name }}_package
+  tags: role_{{ role_name }}_package
 - name: Import setting task
   ansible.builtin.import_tasks:
     file: setting.yml
-  tags:
-    - role_{{ role_name }}_setting
+  tags: role_{{ role_name }}_setting
 - name: Import service task
   ansible.builtin.import_tasks:
     file: service.yml
-  tags:
-    - role_{{ role_name }}_service
+  tags: role_{{ role_name }}_service
