@@ -6,17 +6,25 @@ A brief description of the role goes here.
 OS Platform
 -----------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Requirements
+-----------------
+
+Ansible自体やロールでカバーできない前提条件があれば、ここに記載します。
+例えば、ロールがEC2モジュールを使用する場合、botoパッケージが必要であることをこのセクションに記載するのが良いでしょう。
 
 Role Variables
 -----------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+`defaults/main.yml`、`vars/main.yml`にある変数、ロールのパラメータで設定できる/設定すべき変数を含め、このロールで設定可能な変数の説明をここに記述します。
+他のロールおよび/またはグローバルスコープから読み込まれる変数(hostvars、group varsなど)もここに記載すべきです。
 
 Dependencies
 -----------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+[Galaxy]でホストされている他のロールのリストと、他のロールに設定する必要があるパラメータ、
+または他のロールから使用される変数に関する詳細は、ここに記述します。
+
+[Galaxy]: https://galaxy.ansible.com/ui/
 
 Example Playbook
 -----------------
