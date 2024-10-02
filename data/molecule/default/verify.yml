@@ -8,12 +8,10 @@
     ## テストの前処理
     - name: Gather package facts
       ansible.builtin.package_facts:
-        manager: auto
     - name: Gather service facts
       ansible.builtin.service_facts:
     - name: Gather listen ports facts
       community.general.listen_ports_facts:
-        command: ss
     - name: Set listen port variables
       ansible.builtin.set_fact:
         listen_tcp_posts: "{{ ansible_facts.tcp_listen | map(attribute='port') | unique | sort | list }}"
