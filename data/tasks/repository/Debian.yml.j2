@@ -7,11 +7,21 @@
       - ca-certificates
       - curl
       - gnupg
-# - name: Add apt signing key
+# - name: Create GPG key directory
+#   ansible.builtin.file:
+#     path: "{{ '{{' }} {{ role_name }}_apt_key_dest | dirname {{ '}}' }}"
+#     state: directory
+#     mode: "0755"
+# - name: Download GPG key
 #   ansible.builtin.get_url:
 #     url: "{{ '{{' }} {{ role_name }}_apt_key_url {{ '}}' }}"
-#     dest: "{{ '{{' }} {{ role_name }}_apt_key_dest {{ '}}' }}"
+#     dest: "{{ '{{' }} {{ role_name }}_apt_key_download_dest {{ '}}' }}"
 #     mode: "0644"
+#   register: gpg_key_download_result
+# - name: Convert GPG key
+#   ansible.builtin.command:
+#     cmd: gpg --dearmor -o {{ '{{' }} {{ role_name }}_apt_key_dest {{ '}}' }} {{ '{{' }} {{ role_name }}_apt_key_download_dest {{ '}}' }}
+#   when: gpg_key_download_result is changed
 # - name: Add {{ role_name }} repository
 #   ansible.builtin.apt_repository:
 #     filename: {{ role_name }}
