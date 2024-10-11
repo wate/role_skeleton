@@ -12,13 +12,15 @@
         - "{{ ansible_facts.os_family }}.yml"
       paths:
         - vars
+{% endraw %}
   tags: role_{{ role_name }}_include_vars
+{% raw -%}
 - name: Include variable file
   ansible.builtin.include_vars:
     file: "{{ variable_file }}"
   when: variable_file | length > 0
-  tags: role_{{ role_name }}_include_vars
 {% endraw %}
+  tags: role_{{ role_name }}_include_vars
 - name: Import repository task
   ansible.builtin.import_tasks:
     file: repository.yml

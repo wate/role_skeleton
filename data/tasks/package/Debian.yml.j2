@@ -16,7 +16,7 @@
 #       when: lookup('env', 'GITHUB_TOKEN') | length > 0
 #     - name: Get latest release
 #       ansible.builtin.uri:
-#         url: https://api.github.com/repos/{{ '{{ ' }}{{ role_name }}_repo_owner{{ ' }}' }}/{{ '{{ ' }}{{ role_name }}_repo_name{{ ' }}' }}/releases/latest
+#         url: https://api.github.com/repos/{{ '{{ ' }}{{ role_name }}_repo{{ ' }}' }}/releases/latest
 #         headers: "{{ '{{ ' }}github_api_request_headers{{ ' }}' }}"
 #       register: latest_releases
 #     - name: Set package version variable
@@ -31,7 +31,7 @@
 #       aarch64: arm64
 # - name: Install {{ role_name }}
 #   ansible.builtin.apt:
-#     deb: https://github.com/{{ '{{ ' }}{{ role_name }}_repo_owner{{ ' }}' }}/{{ '{{ ' }}{{ role_name }}_repo_name{{ ' }}' }}/releases/download/{{ '{{ ' }}{{ role_name }}_version{{ ' }}' }}/{{ '{{ ' }}package_file{{ ' }}' }}
+#     deb: https://github.com/{{ '{{ ' }}{{ role_name }}_repo{{ ' }}' }}/releases/download/{{ '{{ ' }}{{ role_name }}_version{{ ' }}' }}/{{ '{{ ' }}package_file{{ ' }}' }}
 - name: Install {{ role_name }} packages
   ansible.builtin.apt:
     name: "{{ '{{ ' }}{{ role_name }}_packages{{ ' }}' }}"
