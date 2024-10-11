@@ -10,7 +10,7 @@ platforms:
       - family_debian
     children:
       - debian
-    # driver:docker
+    ## driver:docker
     image: geerlingguy/docker-debian12-ansible:latest
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
@@ -18,16 +18,16 @@ platforms:
     cgroupns_mode: host
     privileged: true
     pre_build_image: true
-    # driver:vagrant
+    ## driver:vagrant
     box: wate/debian-12
-    memory: 1024
-    cpus: 1
+    # memory: 1024
+    # cpus: 1
   - name: bullseye
     groups:
       - family_debian
     children:
       - debian
-    # driver:docker
+    ## driver:docker
     image: geerlingguy/docker-debian11-ansible:latest
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
@@ -35,10 +35,10 @@ platforms:
     cgroupns_mode: host
     privileged: true
     pre_build_image: true
-    # driver:vagrant
+    ## driver:vagrant
     box: wate/debian-11
-    memory: 1024
-    cpus: 1
+    # memory: 1024
+    # cpus: 1
 provisioner:
   name: ansible
   options:
