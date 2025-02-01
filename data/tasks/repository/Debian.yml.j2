@@ -23,7 +23,12 @@
 #     cmd: gpg --dearmor -o {{ '{{' }} {{ role_name }}_apt_key_dest {{ '}}' }} {{ '{{' }} {{ role_name }}_apt_key_download_dest {{ '}}' }}
 #   when: gpg_key_download_result is changed
 # - name: Add {{ role_name }} repository
-#   ansible.builtin.apt_repository:
-#     filename: {{ role_name }}
-#     repo: deb [signed-by={{ '{{' }} {{ role_name }}_apt_key_dest {{ '}}' }}] https://packages.repository.com/debian {% raw %}{{ ansible_facts.distribution_release }}{% endraw %} main
+#   ansible.builtin.deb822_repository:
+#     name: {{ role_name }}
+#     types: deb
+#     uris: https://packages.repository.com/debian
+#     suites: "{{ '{{' }} ansible_facts.distribution_release {{ '}}' }}"
+#     components:
+#       - main
+#     signed_by: "{{ '{{' }} {{ role_name }}_apt_key_dest {{ '}}' }}"
 #     state: present
