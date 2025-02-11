@@ -4,6 +4,7 @@
 ### Ansible ###
 # Ansible retry files
 *.retry
+.ansible
 
 ### direnv ###
 .direnv
