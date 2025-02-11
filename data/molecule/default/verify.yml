@@ -16,6 +16,17 @@
       ansible.builtin.set_fact:
         listen_tcp_posts: "{{ ansible_facts.tcp_listen | map(attribute='port') | unique | sort | list }}"
         listen_udp_posts: "{{ ansible_facts.udp_listen | map(attribute='port') | unique | sort | list }}"
+    ## リポジトリのテスト
+    # - name: Test repository
+    #   block:
+    #     - name: Check apt source setting
+    #       ansible.builtin.stat:
+    #         path: /etc/apt/sources.list.d/package.sources
+    #       register: repo_result
+    #     - name: Assert file
+    #       ansible.builtin.assert:
+    #         that:
+    #           - repo_result.stat.exists
     # ## パッケージのテスト
     # - name: Assert package
     #   ansible.builtin.assert:
