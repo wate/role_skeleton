@@ -26,10 +26,14 @@
 # - name: Add {{ role_name }} repository
 #   ansible.builtin.deb822_repository:
 #     name: {{ role_name }}
-#     types: deb
 #     uris: https://packages.repository.com/debian
 #     suites: "{{ '{{' }} ansible_facts.distribution_release {{ '}}' }}"
-#     components:
-#       - main
+#     components: main
 #     signed_by: "{{ '{{' }} {{ role_name }}_apt_key_dest {{ '}}' }}"
+#     enabled: true
 #     state: present
+#   register: apt_repository_result
+# - name: Update apt cache
+#   ansible.builtin.apt:
+#     update_cache: true
+#   when: apt_repository_result is changed
