@@ -1,7 +1,7 @@
 # code: language=ansible
 ---
 {% raw -%}
-- name: Find pratform variable file
+- name: Find platform variable file
   ansible.builtin.set_fact:
     variable_file: "{{ lookup('first_found', params, errors='ignore') }}"
   vars:
