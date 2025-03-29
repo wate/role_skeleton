@@ -1,0 +1,10 @@
+direnv
+dotenv
+gnupg
+geerlingguy
+gnupg
+mariadb
+mssql
+mysql
+postgres
+postgresql
