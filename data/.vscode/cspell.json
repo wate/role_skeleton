@@ -1,0 +1,29 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "ignorePaths": [
+    "node_modules",
+    "vendor"
+  ],
+  "words": [],
+  "dictionaries": [
+    "php",
+    "ansible",
+    "name",
+    "other"
+  ],
+  "dictionaryDefinitions": [
+    {
+      "name": "name",
+      "path": "./dictionaries/name.txt"
+    },
+    {
+      "name": "ansible",
+      "path": "./dictionaries/ansible.txt"
+    },
+    {
+      "name": "other",
+      "path": "./dictionaries/other.txt"
+    }
+  ]
+}
