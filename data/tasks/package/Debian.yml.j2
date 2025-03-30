@@ -9,9 +9,9 @@
 #           Accept: application/vnd.github+json
 #     - name: Merge Github API Authorization request header
 #       ansible.builtin.set_fact:
-#         github_api_request_headers: "{{ '{{ ' }}github_api_request_headers | combine(merge_reauest_header){{ ' }}' }}"
+#         github_api_request_headers: "{{ '{{ ' }}github_api_request_headers | combine(merge_request_header){{ ' }}' }}"
 #       vars:
-#         merge_reauest_header:
+#         merge_request_header:
 #           Authorization: Bearer {{ '{{ ' }}lookup('env', 'GITHUB_TOKEN'){{ ' }}' }}
 #       when: lookup('env', 'GITHUB_TOKEN') | length > 0
 #     - name: Get latest release
