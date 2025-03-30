@@ -3,3 +3,4 @@ cgroupns
 cpus
 dearmor
 envrc
+keyrings
