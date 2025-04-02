@@ -31,7 +31,7 @@
 #       aarch64: arm64
 # - name: Install {{ role_name }}
 #   ansible.builtin.apt:
-#     deb: https://github.com/{{ '{{ ' }}{{ role_name }}_repo{{ ' }}' }}/releases/download/{{ '{{ ' }}{{ role_name }}_version{{ ' }}' }}/{{ '{{ ' }}package_file{{ ' }}' }}
+#     deb: https://github.com/{{ '{{ ' }}{{ role_name }}_repo{{ ' }}' }}/releases/download/{{ '{{ ' }}{{ role_name }}_version{{ ' }}' }}/{{ '{{ ' }}asset_file{{ ' }}' }}
 - name: Install {{ role_name }} packages
   ansible.builtin.apt:
     name: "{{ '{{ ' }}{{ role_name }}_packages{{ ' }}' }}"
