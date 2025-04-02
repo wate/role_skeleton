@@ -2,11 +2,13 @@ ansible
 blockinfile
 chdir
 cronvar
+debconf
 elif
 endfor
 fileglob
 findall
 fqcn
+getent
 jinja
 keyrings
 lineinfile
