@@ -14,7 +14,7 @@
     system: true
 - name: Create install directory
   ansible.builtin.file:
-    path: "{{ '{{ ' }}{{ role_name }}_home{{ ' }}' }}"
+    path: "{{ '{{ ' }}{{ role_name }}_root{{ ' }}' }}"
     owner: "{{ '{{ ' }}{{ role_name }}_user{{ ' }}' }}"
     group: "{{ '{{ ' }}{{ role_name }}_group{{ ' }}' }}"
     state: directory

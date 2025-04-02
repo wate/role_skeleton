@@ -5,7 +5,7 @@
     src: {{ role_name }}.service.j2
     dest: /lib/systemd/system/{{ role_name }}.service
     mode: "0644"
-  notify: restart {{ role_name }}
+  notify: Restart {{ role_name }}
 - name: Service {{ role_name }} is active and enabled on system startup
   ansible.builtin.systemd_service:
     name: {{ role_name }}
