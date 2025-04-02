@@ -1,15 +1,18 @@
+# ------------------------
+# {{ ansible_managed }}
+# ------------------------
 [Unit]
-Description=Sample
+Description={{ role_name }}
 # Requires=network.service
 # After=network.target
 
 [Service]
 Type=simple
-# EnvironmentFile=/etc/default/sample
+# EnvironmentFile=/etc/default/{{ role_name }}
 # Environment=VAR_NAME=VAR_VALUE
-# WorkingDirectory={{ app_root }}
-# User=user
-# Group=group
+# WorkingDirectory={{ '{{' }} {{ role_name }}_root {{ '}}' }}
+# User={{ '{{' }} role_name }}_user {{ '}}' }}
+# Group={{ '{{' }} {{ role_name }}_group {{ '}}' }}
 ExecStart={{ role_root }}/bin/app.js
 Restart=always
 
