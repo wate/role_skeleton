@@ -11,7 +11,9 @@
     name: {{ role_name }}
     state: started
     enabled: true
-# - name: allow {{ role_name }} port
+# - name: Allow {{ role_name }} port
 #   community.general.ufw:
 #     rule: allow
-#     port: "123456"
+#     port: "{{ '{{' }}  {{ role_name }}_port {{ '}}' }} "
+#     from_ip: "{{ '{{' }} {{ role_name }}_allow_connect_other_host | default('any') {{ '}}' }} "
+#   when: {{ role_name }}_allow_connect_other_host is defined

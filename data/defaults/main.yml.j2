@@ -8,3 +8,21 @@
 ## インストールするパッケージ
 ## -----------------
 {{ role_name }}_packages: []
+
+## -----------------
+## {{ role_name }}のポート番号
+## -----------------
+#{{ role_name }}_port: 123456
+
+## -----------------
+## {{ role_name }}の設定
+## -----------------
+{{ role_name }}_cfg: []
+
+## -------------------
+## サーバーへの接続を許可するIPアドレス
+## -------------------
+# {{ role_name }}_allow_connect_other_host: 10.0.0.0/8
+# {{ role_name }}_allow_connect_other_host: 172.16.0.0/12
+# {{ role_name }}_allow_connect_other_host: 192.168.0.0/16
+# {{ role_name }}_allow_connect_other_host: any
