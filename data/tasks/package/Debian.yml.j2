@@ -22,7 +22,7 @@
 #     - name: Set package version variable
 #       ansible.builtin.set_fact:
 #         {{ role_name }}_version: "{{ '{{ ' }}latest_releases.json.tag_name{{ ' }}' }}"
-# - name: Set package file variable
+# - name: Set asset file variable
 #   ansible.builtin.set_fact:
 #     asset_file: {{ role_name }}_{{ '{{ ' }}{{ role_name }}_version[1:]{{ ' }}' }}_{{ '{{ ' }}arch_type_maps[ansible_facts['architecture']]{{ ' }}' }}.deb
 #   vars:
