@@ -12,8 +12,16 @@
       ansible.builtin.service_facts:
     - name: Gather listen ports facts
       community.general.listen_ports_facts:
-    - name: Set listen port variables
+    - name: Gather user facts
+      ansible.builtin.getent:
+        database: passwd
+    - name: Gather group facts
+      ansible.builtin.getent:
+        database: group
+    - name: Set assert variables
       ansible.builtin.set_fact:
+        registered_users: "{{ ansible_facts.getent_passwd }}"
+        registered_groups: "{{ ansible_facts.getent_group }}"
         listen_tcp_posts: "{{ ansible_facts.tcp_listen | map(attribute='port') | unique | sort | list }}"
         listen_udp_posts: "{{ ansible_facts.udp_listen | map(attribute='port') | unique | sort | list }}"
     ## リポジトリのテスト
@@ -35,50 +43,37 @@
     # ## ユーザーのテスト
     # - name: Test user
     #   block:
-    #     - name: Check user
-    #       ansible.builtin.user:
-    #         name: www-data
-    #         system: true
-    #       check_mode: true
-    #       register: user_result
     #     - name: Assert user
     #       ansible.builtin.assert:
     #         that:
-    #           - user_result is not changed
+    #           - registered_users['www-data'] is not changed
     # ## グループのテスト
     # - name: Test group
     #   block:
-    #     - name: Check group
-    #       ansible.builtin.group:
-    #         name: www-data
-    #         system: true
-    #       check_mode: true
-    #       register: group_result
     #     - name: Assert group
     #       ansible.builtin.assert:
     #         that:
-    #           - group_result is not changed
+    #           - registered_groups['www-data'] is not changed
     # ## ファイルのテスト
     # - name: Test file
     #   block:
-    #     - name: Check virtualhost setting
+    #     - name: Check virtual host setting
     #       ansible.builtin.stat:
-    #         path: /etc/nginx/sites-available/default
+    #         path: /etc/apache2/sites-available/default
     #       register: result
     #     - name: Assert file
     #       ansible.builtin.assert:
     #         that:
     #           - result.stat.exists
-    #     - name: Check virtualhost enabled
+    #     - name: Check virtual host enabled
     #       ansible.builtin.stat:
-    #         path: /etc/nginx/sites-enabled/default
+    #         path: /etc/apache2/sites-enabled/default
     #       register: result
     #     - name: Assert file
     #       ansible.builtin.assert:
     #         that:
     #           - result.stat.exists
-    #           - result.stat.islnk
-    #           - result.stat.lnk_source == '/etc/nginx/sites-available/default'
+    #           - result.stat.lnk_source == '/etc/apache2/sites-available/default'
     ## サービスのテスト
     # - name: Assert service
     #   ansible.builtin.assert:
