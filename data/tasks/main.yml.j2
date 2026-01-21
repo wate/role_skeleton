@@ -18,7 +18,9 @@
 - name: Include variable file
   ansible.builtin.include_vars:
     file: "{{ variable_file }}"
-  when: variable_file | string | length > 0
+  when:
+    - variable_file is not none
+    - variable_file | length > 0
 {% endraw %}
   tags: role_{{ role_name }}_include_vars
 - name: Import repository task
