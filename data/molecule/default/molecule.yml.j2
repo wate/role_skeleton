@@ -41,8 +41,8 @@ platforms:
     cpus: 1
 provisioner:
   name: ansible
-  # env:
-  #   ANSIBLE_ROLES_PATH: ${MOLECULE_PROJECT_DIRECTORY}/..
+  env:
+    ANSIBLE_ROLES_PATH: ${MOLECULE_PROJECT_DIRECTORY}/..
   options:
     diff: true
   config_options:
