@@ -54,19 +54,6 @@ provisioner:
 # verifier:
 #   name: ansible
 # scenario:
-#   test_sequence:
-#     - dependency
-#     - cleanup
-#     - destroy
-#     - syntax
-#     - create
-#     - prepare
-#     - converge
-#     - idempotence
-#     - side_effect
-#     - verify
-#     - cleanup
-#     - destroy
 #   create_sequence:
 #     - dependency
 #     - create
@@ -87,5 +74,18 @@ provisioner:
 #     - converge
 #   destroy_sequence:
 #     - dependency
+#     - cleanup
+#     - destroy
+#   test_sequence:
+#     - dependency
+#     - cleanup
+#     - destroy
+#     - syntax
+#     - create
+#     - prepare
+#     - converge
+#     - idempotence
+#     - side_effect
+#     - verify
 #     - cleanup
 #     - destroy
