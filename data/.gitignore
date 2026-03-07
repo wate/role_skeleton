@@ -8,7 +8,7 @@
 
 ### direnv ###
 .direnv
-.envrc
+#.envrc
 
 ### dotenv ###
 .env
